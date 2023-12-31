@@ -1,0 +1,13 @@
+
+:root {
+  --color-50: #ffe3ef;
+  --color-100: #ffb2cb;
+  --color-200: #fe81a8;
+  --color-300: #fc5086;
+  --color-400: #fa2163;
+  --color-500: #e00a4a;
+  --color-600: #af0339;
+  --color-700: #7e0029;
+  --color-800: #4d0018;
+  --color-900: #1f0008;
+}s
