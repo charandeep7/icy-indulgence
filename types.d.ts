@@ -9,3 +9,11 @@ type NuttyProps = {
     img: string,
     price: string
 }[]
+
+interface SocialLinksProps {
+    id: number;
+    title: string;
+    icon: React.ReactElement;
+    link: string;
+    color: string
+}[]

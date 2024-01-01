@@ -1,3 +1,4 @@
+import Ads from "./Ads";
 import IceCreamCard from "./IcecreamCard";
 import { Classy, Nutty } from "@/lib/constant";
 
@@ -13,7 +14,7 @@ export default function MenuLists() {
       <IceCreamCard flavor="Classy" list={Classy} />
       <IceCreamCard flavor="Nutty Delights" list={Nutty} />
       <IceCreamCard flavor="Unique and Fun" list={Classy} />
-      <IceCreamCard flavor="International Flavors" list={Nutty} />
+      <IceCreamCard flavor="International Flavors" list={Nutty} /> 
     </div>
   );
 }

@@ -32,7 +32,7 @@ export default function Carousel() {
   useEffect(() => {
     let interval = setInterval(() => {
       setCurrentSlide((currentSlide + 1) % images.length);
-    }, 4000);
+    }, 400000);
     return () => clearInterval(interval);
   }, [currentSlide]);
   return (
@@ -57,12 +57,9 @@ export default function Carousel() {
                   alt={`Slide ${index + 1}`}
                   width={1400}
                   height={800}
-                  layout="responsive"
                   className={`animate-fadeIn ${
                     currentSlide === index ? "" : "animate-fadeOut"
                   }`}
-                  objectFit="fill"
-                  //   isZoomed
                 />
               );
             }
