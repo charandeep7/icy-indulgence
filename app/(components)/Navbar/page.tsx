@@ -16,12 +16,12 @@ import { Input } from "@nextui-org/input";
 import { Link } from "@nextui-org/link";
 import { SearchIcon } from "./SearchIcon";
 import { Button } from "@nextui-org/button";
-import Logo from "./Logo";
 import { cedarville_cursive } from "@/lib/fonts";
 import { CiCircleChevDown } from "react-icons/ci";
 import { TbListDetails } from "react-icons/tb";
 import { IoMdMan } from "react-icons/io";
 import { IoMdContacts } from "react-icons/io";
+import Logo from "./Logo";
 
 import ThemeSwitcher from "@/app/components/ThemeSwitcher";
 
@@ -107,7 +107,7 @@ export default function Header() {
           <DropdownMenu aria-label="Profile Actions" variant="flat">
             <DropdownItem key="profile" className="h-14 gap-2">
               <p className="font-semibold">Signed in as</p>
-              <p className="font-semibold">zoey@example.com</p>
+              <p className="font-semibold">kitishkumar2003@gmail.com</p>
             </DropdownItem>
             <DropdownItem key="settings">My Settings</DropdownItem>
             <DropdownItem key="team_settings">Team Settings</DropdownItem>

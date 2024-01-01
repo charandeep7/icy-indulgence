@@ -1,3 +1,57 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+::selection {
+  color: red;
+  background: #ddd;
+}
+
+@keyframes fadeInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOutToLeft {
+  /* from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-100%);
+  } */
+}
+
+.animate-fadeIn {
+  animation: fadeInFromRight 0.5s ease-in-out;
+}
+
+.animate-fadeOut {
+  animation: fadeOutToLeft 0.5s ease-in-out;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 0.5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: red;
+  border-radius: 10px;
+}

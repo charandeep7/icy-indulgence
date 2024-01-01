@@ -1,3 +1,11 @@
-export default function Hero(){
-    return <h1>Heros</h1>
+import ImageCarousel from "./Carousel";
+import MenuLists from "./MenusLists";
+
+export default function Hero() {
+  return (
+    <div>
+      <ImageCarousel />
+      <MenuLists />
+    </div>
+  );
 }

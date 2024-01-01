@@ -18,7 +18,22 @@ const config: Config = {
         extend: 'light',
         colors: {
           background: '#ffe3ef',
-          
+          foreground: '#f00',
+          primary: {
+            50: "#ffe3ef",
+            100: "#ffb2cb",
+            200: "#fe81a8",
+            300: "#fc5086",
+            400: "#fa2163",
+            500: "#e00a4a",
+            600: "#af0339",
+            700: "#7e0029",
+            800: "#4d0018",
+            900: "#1f0008",
+          }
+        },
+        layout: {
+
         }
       }
     }
