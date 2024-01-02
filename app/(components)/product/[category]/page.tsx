@@ -1,5 +1,8 @@
-import { Divider } from "@nextui-org/react";
+import { Divider } from "@nextui-org/divider";
+import v1 from "@/public/vanilla/v1.jpg";
+import Card from "./Card";
 
+const images = [v1, v1, v1, v1, v1, v1, v1, v1, v1, v1, v1, v1, v1, v1];
 type Params = {
   params: {
     category: string;
@@ -22,16 +25,16 @@ export default async function Project({ params: { category } }: Params) {
   const name = category.split("%20").join(" ");
   return (
     <div className="relative">
-      <div className="sticky top-16 z-10 backdrop-blur-sm">
-        <h1 className="font-semibold text-3xl p-4 ">
-          {name}
-        </h1>
+      <div className="sticky top-16 z-20 backdrop-blur-sm">
+        <h1 className="font-semibold text-3xl p-4 ">{name}</h1>
+        <Divider />
       </div>
-      <Divider />
-      <div className="">
-        <p>
-          kitish
-        </p>
+      <div className="-z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 p-4">
+        {
+          images.map((image,id) => (
+            <Card key={id.toString()} />
+          ))
+        }
       </div>
     </div>
   );
