@@ -1,8 +1,7 @@
-import Ads from "./Ads";
 import IceCreamCard from "./IcecreamCard";
 import { Classy, Nutty } from "@/lib/constant";
 
-export default function MenuLists() {
+export default function ProductList() {
   return (
     <div className="space-y-3">
       <h1 className="text-xl font-light ml-4">

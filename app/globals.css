@@ -8,6 +8,16 @@
   }
 }
 
+@keyframes spin {
+  to {
+    transform: rotate(1440deg); /* Increase the rotation value for faster spin */
+    scale: 0.5;
+  }
+  from {
+    transform: rotate(0deg);
+    scale: 1.5;
+  }
+}
 
 ::selection {
   color: red;

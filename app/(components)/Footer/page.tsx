@@ -16,44 +16,6 @@ interface FooterListProps {
   }[];
 }
 
-export const SocialLinks: SocialLinksProps[] = [
-  {
-    id: 1,
-    title: "Facebook",
-    icon: <AiFillFacebook />,
-    link: "https://www.facebook.com/example",
-    color: '00f'
-},
-{
-    id: 2,
-    title: "Instagram",
-    icon: <AiFillInstagram />,
-    link: "https://www.instagram.com/example",
-    color: 'd62976'
-},
-{
-    id: 4,
-    title: "X",
-    icon: <FaSquareXTwitter />,
-    link: "https://twitter.com/example",
-    color: '14171A'
-},
-{
-    id: 3,
-    title: "LinkedIn",
-    icon: <AiFillLinkedin />,
-    link: "https://www.linkedin.com/in/example",
-    color: '0077b5'
-},
-{
-    id: 5,
-    title: "GitHub",
-    icon: <FaGithub />,
-    link: "https://github.com/example",
-    color: '000'
-},
-];
-
 function FooterList(item: FooterListProps) {
   return (
     <div>
@@ -85,19 +47,48 @@ export default function Footer() {
         <div>
           <h1 className="text-2xl gap-2 font-semibold">Social Links</h1>
           <ul className="flex flex-col sm:flex-col gap-2">
-            {SocialLinks.map(({ id, title, icon, link, color }) => (
-              <Link
-                href={link}
-                key={id.toString()}
-                isExternal
-                // showAnchorIcon
-                style={{ color: `#${color}` }}
-                className={`text-xl`}
-              >
-                {icon} &nbsp;
-                {title}
-              </Link>
-            ))}
+            <Link
+              href="https://www.facebook.com/charandeep.kumar.12"
+              key="1"
+              isExternal
+              className="text-xl text-[#00f]"
+            >
+              <AiFillFacebook /> &nbsp; Facebook
+            </Link>
+            <Link
+              href="https://www.instagram.com/_kitish"
+              key="2"
+              isExternal
+              className="text-xl text-[#d62976]"
+            >
+              <AiFillInstagram /> &nbsp; Instagram
+            </Link>
+            <Link
+              href="https://twitter.com/_kitish"
+              key="1"
+              isExternal
+              className="text-xl text-[#14171a] dark:text-white"
+            >
+              <FaSquareXTwitter /> &nbsp; X
+            </Link>
+
+            <Link
+              href="https://www.linkedin.com/in/charandeep/"
+              key="1"
+              isExternal
+              className="text-xl text-[#0077b5]"
+            >
+              <AiFillLinkedin /> &nbsp; LinkedIn,
+            </Link>
+
+            <Link
+              href="https://www.github.com/charandeep7"
+              key="1"
+              isExternal
+              className="text-xl text-[#000] dark:text-white"
+            >
+              <FaGithub /> &nbsp; Github
+            </Link>
           </ul>
         </div>
       </div>
@@ -105,11 +96,18 @@ export default function Footer() {
       <p className="text-justify w-10/12 m-auto TextAlignLast">
         By continuing to use this website, you agree to our Terms of Service,
         Cookie Policy, Privacy Policy, and Content Policies. All trademarks are
-        properties of their respective owners. 2023-2024 &copy; Icy
-        Indulgence&trade;. All rights reserved.
+        properties of their respective owners. 2023-{new Date().getFullYear()}{" "}
+        &copy; Icy Indulgence&trade;. All rights reserved.
       </p>
       <p className="text-center w-10/12 m-auto -mb-5 text-black dark:text-white">
-        Designed and Developed by <a href="https://portfolio-revisit.vercel.app/" target="_blank" className="text-red-500 hover:underline">@kitish</a>
+        Designed and Developed by{" "}
+        <a
+          href="https://portfolio-revisit.vercel.app/"
+          target="_blank"
+          className="text-red-500 hover:underline"
+        >
+          @kitish
+        </a>
       </p>
     </div>
   );
