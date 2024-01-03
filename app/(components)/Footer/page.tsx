@@ -78,7 +78,7 @@ export default function Footer() {
               isExternal
               className="text-xl text-[#0077b5]"
             >
-              <AiFillLinkedin /> &nbsp; LinkedIn,
+              <AiFillLinkedin /> &nbsp; LinkedIn
             </Link>
 
             <Link

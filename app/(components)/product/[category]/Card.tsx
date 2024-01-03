@@ -5,8 +5,12 @@ import { Button } from "@nextui-org/button";
 import { FaCartPlus, FaHeart } from "react-icons/fa6";
 import { SiReadthedocs } from "react-icons/si";
 import { IoMdShareAlt } from "react-icons/io";
+import Link from "next/link";
 
-export default function Card() {
+export default function Card({subtype, more}:{
+  subtype: string,
+  more: string
+}) {
   return (
     <div className="shadow-lg rounded-md sm:max-w-[350px] flex flex-col p-2 items-center h-[450px] border border-slate-300 border-opacity-30">
       <div className="rounded-md overflow-hidden mb-2">
@@ -21,7 +25,7 @@ export default function Card() {
         />
       </div>
       <div className="w-full mb-2">
-        <p className="text-center font-semibold text-lg">Classic Vanilla</p>
+        <p className="text-center font-semibold text-lg">{subtype}</p>
       </div>
       <div className="w-full flex flex-col justify-end">
         <div className="flex space-x-2 mt-auto">
@@ -45,8 +49,11 @@ export default function Card() {
             className="bg-[#4CAF50] w-1/2 p-2"
             endContent={<SiReadthedocs />}
             size="md"
+            as={Link}
+            href={more}
           >
             View More
+            
           </Button>
           <Button
             className="bg-[#0096FF] w-1/2 p-2"
