@@ -23,6 +23,7 @@ import { IoMdMan } from "react-icons/io";
 import { IoMdContacts } from "react-icons/io";
 import { FaCartShopping } from "react-icons/fa6";
 import Logo from "./Logo";
+import NextLink from 'next/link'
 
 import ThemeSwitcher from "@/app/components/ThemeSwitcher";
 
@@ -43,12 +44,12 @@ export default function Header() {
           justify="start"
         >
           <NavbarItem>
-            <Link color="foreground" href="#">
+            <Link as={NextLink} color="foreground" href="/">
               Home
             </Link>
           </NavbarItem>
           <NavbarItem isActive>
-            <Link href="#" aria-current="page" color="secondary">
+            <Link as={NextLink} href="/specials" aria-current="page" color="secondary">
               Specials
             </Link>
           </NavbarItem>
@@ -75,6 +76,8 @@ export default function Header() {
                 key="about us"
                 description="Know more about our shop"
                 startContent={<TbListDetails />}
+                as={NextLink}
+                href="/about"
               >
                 About
               </DropdownItem>
@@ -82,6 +85,8 @@ export default function Header() {
                 key="contact us"
                 description="Contact to our shop staffs"
                 startContent={<IoMdContacts />}
+                as={NextLink}
+                href="/contactus"
               >
                 Contact
               </DropdownItem>
@@ -89,6 +94,9 @@ export default function Header() {
                 key="owner"
                 description="About Shop Owner Kitish"
                 startContent={<IoMdMan />}
+                as={NextLink}
+                target="_blank"
+                href="https://portfolio-revisit.vercel.app/"
               >
                 Owner
               </DropdownItem>

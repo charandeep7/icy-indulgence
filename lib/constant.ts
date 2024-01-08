@@ -80,6 +80,39 @@ export const Nutty = [
     },
 ];
 
+export const InternationalFlavors = [
+    {
+        title: "Green Matcha",
+        img: "/flavor/international/green-matcha.png",
+        price: "₹305.50",
+    },
+    {
+        title: "Hazelnut",
+        img: "/flavor/nutty/hazlenut.jpg",
+        price: "₹703.00",
+    },
+    {
+        title: "Macadamia",
+        img: "/flavor/nutty/maca.jpg",
+        price: "₹620.00",
+    },
+    {
+        title: "Maple Walnut",
+        img: "/flavor/nutty/maple.jpg",
+        price: "₹808.00",
+    },
+    {
+        title: "Pistachio",
+        img: "/flavor/nutty/pistachio.jpg",
+        price: "₹1200.20",
+    },
+    {
+        title: "Pralines",
+        img: "/flavor/nutty/praline.jpg",
+        price: "₹560.50",
+    },
+];
+
 
 export const faqs = [
     {
@@ -127,33 +160,47 @@ export const faqs = [
 export const AboutIcyIndulgence = [
     {
         id: 1,
-        title: 'Who we are'
+        title: 'Who we are',
+        href: 'https://portfolio-revisit.vercel.app/',
+        isExternal: true,
     },
     {
         id: 2,
-        title: 'Blog'
+        title: 'Blog',
+        href: 'https://kitish-blog.vercel.app/',
+        isExternal: true,
     },
     {
         id: 3,
-        title: 'Work With us'
+        title: 'Work With us',
+        href: '/jobs',
+        isExternal: true,
     },
     {
         id: 4,
-        title: 'Contact us'
+        title: 'Contact us',
+        href: '/contactus',
+        isExternal: true,
     }
 ]
 
 export const LearnMore = [
     {
         id: 1,
-        title: 'Privacy'
+        title: 'Privacy',
+        href: '/privacy',
+        isExternal: true,
     },
     {
         id: 2,
-        title: 'Security'
+        title: 'Security',
+        href: '/security',
+        isExternal: true,
     },
     {
         id: 3,
-        title: 'Terms'
+        title: 'Terms',
+        href: '/terms',
+        isExternal: true,
     }
 ]

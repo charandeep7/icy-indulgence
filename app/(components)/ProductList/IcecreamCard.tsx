@@ -1,12 +1,10 @@
-"use client";
 import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
-import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 export default function IceCreamCard({flavor, list}:{
     flavor: string,
     list: ClassyProps
 }) {
-  const router = useRouter()
   return (
     <div>
       <h2 className="ml-4 font-semibold text-2xl mb-2">{flavor}</h2>
@@ -16,7 +14,8 @@ export default function IceCreamCard({flavor, list}:{
             shadow="sm"
             key={index}
             isPressable
-            onPress={() => router.push(`/product/${item.title}`)}
+            as={Link}
+            href={`/product/${item.title}`}
             className="flex-shrink-0 mb-2 mt-2"
           >
             <CardBody className="overflow-visible p-0">

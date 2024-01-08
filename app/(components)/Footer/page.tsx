@@ -13,6 +13,8 @@ interface FooterListProps {
   obj: {
     id: number;
     title: string;
+    href: string,
+    isExternal: boolean,
   }[];
 }
 
@@ -21,11 +23,11 @@ function FooterList(item: FooterListProps) {
     <div>
       <h1 className="text-2xl gap-2 font-semibold">{item.subheading}</h1>
       <ul className="flex flex-col gap-2">
-        {item.obj.map(({ id, title }) => (
+        {item.obj.map(({ id, title, href, isExternal }) => (
           <Link
-            href="#"
+            href={href}
             key={id.toString()}
-            isExternal
+            isExternal={isExternal}
             showAnchorIcon
             className="text-xl"
           >
