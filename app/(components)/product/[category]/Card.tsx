@@ -7,8 +7,9 @@ import { SiReadthedocs } from "react-icons/si";
 import { IoMdShareAlt } from "react-icons/io";
 import Link from "next/link";
 
-export default function Card({subtype, more}:{
+export default function Card({subtype,price,more}:{
   subtype: string,
+  price: string,
   more: string
 }) {
   return (
@@ -24,8 +25,9 @@ export default function Card({subtype, more}:{
           isZoomed
         />
       </div>
-      <div className="w-full mb-2">
-        <p className="text-center font-semibold text-lg">{subtype}</p>
+      <div className="flex w-full mb-2 justify-evenly">
+        <p className="font-semibold text-lg">{subtype}</p>
+        <p className="font-semibold text-base text-default-500">{price}</p>
       </div>
       <div className="w-full flex flex-col justify-end">
         <div className="flex space-x-2 mt-auto">

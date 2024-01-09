@@ -31,7 +31,7 @@ export default function Header() {
   return (
     <Navbar isBordered maxWidth="full">
       <NavbarContent justify="end">
-        <NavbarBrand className="cursor-pointer">
+        <NavbarBrand className="cursor-pointer" as={NextLink} href={'/'}>
           <Logo />
           <p
             className={`hidden sm:block font-bold text-inherit text-xl ${cedarville_cursive.className}`}
