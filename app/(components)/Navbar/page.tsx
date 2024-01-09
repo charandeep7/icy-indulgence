@@ -10,6 +10,7 @@ import {
   DropdownTrigger,
   DropdownMenu,
   DropdownItem,
+  DropdownSection,
 } from "@nextui-org/dropdown";
 import { Avatar } from "@nextui-org/avatar";
 import { Input } from "@nextui-org/input";
@@ -23,7 +24,7 @@ import { IoMdMan } from "react-icons/io";
 import { IoMdContacts } from "react-icons/io";
 import { FaCartShopping } from "react-icons/fa6";
 import Logo from "./Logo";
-import NextLink from 'next/link'
+import NextLink from "next/link";
 
 import ThemeSwitcher from "@/app/components/ThemeSwitcher";
 
@@ -31,7 +32,7 @@ export default function Header() {
   return (
     <Navbar isBordered maxWidth="full">
       <NavbarContent justify="end">
-        <NavbarBrand className="cursor-pointer" as={NextLink} href={'/'}>
+        <NavbarBrand className="cursor-pointer" as={NextLink} href={"/"}>
           <Logo />
           <p
             className={`hidden sm:block font-bold text-inherit text-xl ${cedarville_cursive.className}`}
@@ -39,17 +40,19 @@ export default function Header() {
             icy <br /> indulgence
           </p>
         </NavbarBrand>
-        <NavbarContent
-          className="hidden md:flex md:gap-7"
-          justify="start"
-        >
+        <NavbarContent className="hidden md:flex md:gap-7" justify="start">
           <NavbarItem>
             <Link as={NextLink} color="foreground" href="/">
               Home
             </Link>
           </NavbarItem>
           <NavbarItem isActive>
-            <Link as={NextLink} href="/specials" aria-current="page" color="secondary">
+            <Link
+              as={NextLink}
+              href="/specials"
+              aria-current="page"
+              color="secondary"
+            >
               Specials
             </Link>
           </NavbarItem>
@@ -128,9 +131,15 @@ export default function Header() {
             type="search"
           />
           <div className="hidden sm:block">
-            <Button size="sm" color="success" isIconOnly><span className="text-2xl"><FaCartShopping /></span></Button>
+            <Button size="sm" color="success" isIconOnly>
+              <span className="text-2xl">
+                <FaCartShopping />
+              </span>
+            </Button>
           </div>
-          <Dropdown placement="bottom-end">
+          <Dropdown
+            placement="bottom-end"
+          >
             <DropdownTrigger>
               <Avatar
                 isBordered
@@ -147,17 +156,43 @@ export default function Header() {
                 <p className="font-semibold">Signed in as</p>
                 <p className="font-semibold">kitishkumar2003@gmail.com</p>
               </DropdownItem>
-              <DropdownItem key="settings">My Settings</DropdownItem>
-              <DropdownItem key="team_settings">Team Settings</DropdownItem>
-              <DropdownItem key="analytics">Analytics</DropdownItem>
-              <DropdownItem key="system">System</DropdownItem>
-              <DropdownItem key="configurations">Configurations</DropdownItem>
-              <DropdownItem key="help_and_feedback">
-                Help & Feedback
-              </DropdownItem>
-              <DropdownItem key="logout" color="danger">
-                Log Out
-              </DropdownItem>
+              <DropdownSection title="Theme" showDivider>
+                <DropdownItem key="theme-mode">
+                  <ThemeSwitcher />
+                </DropdownItem>
+              </DropdownSection>
+              <DropdownSection title="Features" showDivider>
+                <DropdownItem
+                  key="specials"
+                  description="Ice Cream of the day"
+                  as={NextLink}
+                  href="/specials"
+                >
+                  Specials
+                </DropdownItem>
+                <DropdownItem
+                  key="owner"
+                  description="About Shop Owner Kitish"
+                  as={NextLink}
+                  href="https://portfolio-revisit.vercel.app/"
+                  target="_blank"
+                >
+                  Owner
+                </DropdownItem>
+              </DropdownSection>
+              <DropdownSection title="Accounts">
+                <DropdownItem key="settings">My Settings</DropdownItem>
+                <DropdownItem key="team_settings">Team Settings</DropdownItem>
+                <DropdownItem key="analytics">Analytics</DropdownItem>
+                <DropdownItem key="system">System</DropdownItem>
+                <DropdownItem key="configurations">Configurations</DropdownItem>
+                <DropdownItem key="help_and_feedback">
+                  Help & Feedback
+                </DropdownItem>
+                <DropdownItem key="logout" color="danger">
+                  Log Out
+                </DropdownItem>
+              </DropdownSection>
             </DropdownMenu>
           </Dropdown>
         </div>

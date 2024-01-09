@@ -80,36 +80,74 @@ export const Nutty = [
     },
 ];
 
-export const InternationalFlavors = [
+export const UniqueAndFun = [
     {
-        title: "Green Matcha",
-        img: "/flavor/international/green-matcha.png",
+        title: "Cheesecake",
+        img: "/flavor/unique/cheesecake.jpg",
         price: "₹305.50",
     },
     {
-        title: "Hazelnut",
-        img: "/flavor/nutty/hazlenut.jpg",
+        title: "Raspberry",
+        img: "/flavor/unique/raspberry.jpg",
+        price: "₹305.50",
+    },
+    {
+        title: "BB Cobbler",
+        img: "/flavor/unique/bb-cobbler.jpg",
+        price: "₹305.50",
+    },
+    {
+        title: "Blueberry",
+        img: "/flavor/unique/blueberry.jpg",
+        price: "₹305.50",
+    },
+    {
+        title: "Pineapple",
+        img: "/flavor/unique/pineapple.jpg",
+        price: "₹305.50",
+    },
+    {
+        title: "Mango Tango",
+        img: "/flavor/unique/mango-tango.jpg",
+        price: "₹305.50",
+    },
+    {
+        title: "Passion Fruit",
+        img: "/flavor/unique/passion-fruit.jpg",
+        price: "₹305.50",
+    },
+    {
+        title: "Kiwi Sorbet",
+        img: "/flavor/unique/kiwi-sorbet.jpg",
+        price: "₹305.50",
+    }
+]
+
+export const InternationalFlavors = [
+    {
+        title: "Green Matcha",
+        img: "/flavor/international/green-matcha.jpg",
+        price: "₹305.50",
+    },
+    {
+        title: "Tiramisu",
+        img: "/flavor/international/tiramisu.jpg",
         price: "₹703.00",
     },
     {
-        title: "Macadamia",
-        img: "/flavor/nutty/maca.jpg",
+        title: "Thai Tea",
+        img: "/flavor/international/thai-tea.jpg",
         price: "₹620.00",
     },
     {
-        title: "Maple Walnut",
-        img: "/flavor/nutty/maple.jpg",
+        title: "Lychee Rose",
+        img: "/flavor/international/lychee-rose.jpg",
         price: "₹808.00",
     },
     {
-        title: "Pistachio",
-        img: "/flavor/nutty/pistachio.jpg",
+        title: "Sesame Seed",
+        img: "/flavor/international/seasame.jpg",
         price: "₹1200.20",
-    },
-    {
-        title: "Pralines",
-        img: "/flavor/nutty/praline.jpg",
-        price: "₹560.50",
     },
 ];
 

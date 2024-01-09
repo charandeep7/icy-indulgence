@@ -1,5 +1,5 @@
 import IceCreamCard from "./IcecreamCard";
-import { Classy, Nutty, InternationalFlavors } from "@/lib/constant";
+import { Classy, Nutty, InternationalFlavors, UniqueAndFun } from "@/lib/constant";
 
 export default function ProductList() {
   return (
@@ -12,7 +12,7 @@ export default function ProductList() {
       </h1>
       <IceCreamCard flavor="Classy" list={Classy} />
       <IceCreamCard flavor="Nutty Delights" list={Nutty} />
-      <IceCreamCard flavor="Unique and Fun" list={Classy} />
+      <IceCreamCard flavor="Unique and Fun" list={UniqueAndFun} />
       <IceCreamCard flavor="International Flavors" list={InternationalFlavors} /> 
     </div>
   );

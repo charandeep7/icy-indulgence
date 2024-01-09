@@ -27,23 +27,23 @@
 @keyframes fadeInFromRight {
   from {
     opacity: 0;
-    transform: translateX(100%);
+    transform: translateX(20px) scale(0.8);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
   }
 }
 
 @keyframes fadeOutToLeft {
-  /* from {
+  from {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(0) scale(1);
   }
   to {
     opacity: 0;
-    transform: translateX(-100%);
-  } */
+    transform: translateX(-20px) scale(0.8);
+  }
 }
 
 .animate-fadeIn {
@@ -53,6 +53,7 @@
 .animate-fadeOut {
   animation: fadeOutToLeft 0.5s ease-in-out;
 }
+
 
 
 /* width */
