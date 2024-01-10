@@ -6,6 +6,7 @@ import { FaCartPlus, FaHeart } from "react-icons/fa6";
 import { SiReadthedocs } from "react-icons/si";
 import { IoMdShareAlt } from "react-icons/io";
 import Link from "next/link";
+import ShareButton from "./ShareButton";
 
 export default function Card({subtype,price,more}:{
   subtype: string,
@@ -57,13 +58,7 @@ export default function Card({subtype,price,more}:{
             View More
             
           </Button>
-          <Button
-            className="bg-[#0096FF] w-1/2 p-2"
-            endContent={<IoMdShareAlt />}
-            size="md"
-          >
-            Share
-          </Button>
+          <ShareButton subtype={subtype} />
         </div>
       </div>
     </div>
