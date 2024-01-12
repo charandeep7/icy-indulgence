@@ -242,3 +242,78 @@ export const LearnMore = [
         isExternal: true,
     }
 ]
+
+export const Vanilla_Icecreams = [
+    {
+        subtype: 'Classic Vanilla',
+        img: '/vanilla/classic-vanilla.jpg',
+        price: '₹500.104',
+        quantity: 10
+    },
+    {
+        subtype: 'French Vanilla',
+        img: '/vanilla/french-vanilla.png',
+        price: '₹810.452',
+        quantity: 2
+    },
+    {
+        subtype: 'Vanilla Bean',
+        img: '/vanilla/vanilla-bean.jpg',
+        price: '₹1200.210',
+        quantity: 0
+    },
+    {
+        subtype: 'Homemade Vanilla',
+        img: '/vanilla/homemade-vanilla.jpg',
+        price: '₹269.521',
+        quantity: 28
+    },
+    {
+        subtype: 'No-Churn Vanilla',
+        img: '/vanilla/no-churn.webp',
+        price: '₹269.521',
+        quantity: 8
+    },
+    {
+        subtype: 'Low Fat Vanilla',
+        img: '/vanilla/lowfat.jpg',
+        price: '₹269.521',
+        quantity: 15
+    },
+    {
+        subtype: 'Sugar Free Vanilla',
+        img: '/vanilla/sugar-free.jpg',
+        price: '₹269.521',
+        quantity: 15
+    },
+    {
+        subtype: 'Vanilla Custard',
+        img: '/vanilla/vanilla-custard.webp',
+        price: '₹269.521',
+        quantity: 15
+    },
+    {
+        subtype: 'Organic Vanilla',
+        img: '/vanilla/organic.jpg',
+        price: '₹1524.521',
+        quantity: 15
+    },
+    {
+        subtype: 'Vanilla with Mix-ins',
+        img: '/vanilla/mix-ins.jpg',
+        price: '₹269.521',
+        quantity: 15
+    },
+    {
+        subtype: 'Vanilla Almond',
+        img: '/vanilla/almond.webp',
+        price: '₹269.521',
+        quantity: 5
+    },
+    {
+        subtype: 'Vanilla Caramel Swirl',
+        img: '/vanilla/caramel-swirl.png',
+        price: '₹1569.521',
+        quantity: 1
+    },
+]

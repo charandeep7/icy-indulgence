@@ -1,12 +1,13 @@
 import { Divider } from "@nextui-org/divider";
-import v1 from "@/public/vanilla/v1.jpg";
+import v1 from "@/public/vanilla/classic-vanilla.jpg";
+import v2 from "@/public/vanilla/french-vanilla.png";
 import Card from "./Card";
-
-const images = [v1, v1, v1, v1, v1, v1, v1, v1, v1, v1, v1, v1, v1, v1];
+import { Vanilla_Icecreams } from "@/lib/constant";
+const images = [v1, v2, v1, v2, v1, v2, v1, v1, v1, v1, v1, v1, v1, v1];
 type Params = {
   params: {
     category: string;
-    price: string
+    price: string;
   };
 };
 export async function generateMetadata({ params: { category } }: Params) {
@@ -24,7 +25,6 @@ export async function generateMetadata({ params: { category } }: Params) {
 
 export default async function Category({ params: { category } }: Params) {
   const productCategory = category.split("%20").join(" ");
-  const subtype = 'Classic Vanilla', price = "₹500.104"
   return (
     <div className="relative">
       <div className="sticky top-16 z-20 backdrop-blur-sm">
@@ -32,11 +32,16 @@ export default async function Category({ params: { category } }: Params) {
         <Divider />
       </div>
       <div className="-z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 p-4">
-        {
-          images.map((image,id) => (
-            <Card key={id.toString()} subtype={subtype} price={price} more={`/product/${category}/${subtype}`} />
-          ))
-        }
+        {Vanilla_Icecreams.map(({img, price, quantity, subtype}, id) => (
+          <Card
+            key={id.toString()}
+            subtype={subtype}
+            price={price}
+            more={`/product/${category}/${subtype}`}
+            img={img}
+            quantity={quantity}
+          />
+        ))}
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
-import v1 from "@/public/vanilla/v1.jpg";
+import v1 from "@/public/vanilla/classic-vanilla.jpg";
 import Link from "next/link";
 import { Button } from "@nextui-org/button";
 

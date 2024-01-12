@@ -41,11 +41,11 @@ export default function ShareButton({ subtype }: { subtype: string }) {
         backdrop="opaque"
         isOpen={isOpen}
         onOpenChange={onOpenChange}
+        placement="center"
         classNames={{
           backdrop:
             "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-20",
         }}
-        placement="center"
       >
         <ModalContent>
           {(onClose) => (

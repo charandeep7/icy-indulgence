@@ -1,24 +1,24 @@
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
-import v1 from "@/public/vanilla/v1.jpg";
 import { Button } from "@nextui-org/button";
 import { FaCartPlus, FaHeart } from "react-icons/fa6";
 import { SiReadthedocs } from "react-icons/si";
-import { IoMdShareAlt } from "react-icons/io";
 import Link from "next/link";
 import ShareButton from "./ShareButton";
 
-export default function Card({subtype,price,more}:{
+export default function Card({subtype,price,more,img,quantity}:{
   subtype: string,
   price: string,
-  more: string
+  more: string,
+  img: string,
+  quantity: number
 }) {
   return (
     <div className="shadow-lg rounded-md sm:max-w-[350px] flex flex-col p-2 items-center h-[450px] border border-slate-300 border-opacity-30">
       <div className="rounded-md overflow-hidden mb-2">
         <Image
           as={NextImage}
-          src={v1.src}
+          src={img}
           height={400}
           width={400}
           alt="vanilla"
