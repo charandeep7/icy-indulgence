@@ -131,7 +131,7 @@ export default function Header() {
             type="search"
           />
           <div className="hidden sm:block">
-            <Button size="sm" color="success" isIconOnly>
+            <Button size="sm" color="success" isIconOnly as={NextLink} href="/cart">
               <span className="text-2xl">
                 <FaCartShopping />
               </span>
