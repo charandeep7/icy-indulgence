@@ -14,22 +14,25 @@ interface QueryProps {
 
 export default function SearchQuery() {
   const [query, setQuery] = useState<string>("");
-  const [list, setList] = useState<QueryProps[]>();
+  const [loading, setLoading] = useState(0);
+  const [list, setList] = useState<QueryProps[]>([]);
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const searchResult = async () => {
-      if (query === "") {
+      if (!query.trim()) {
         setList([]);
         return;
       }
-
       try {
+        setLoading(1);
         const result = await fetch(`/api/search?query=${query}`);
-        const data = await result.json();
-        setList(data);
+        const data = await result.json();setList(data);
       } catch (error) {
         console.error("Error fetching search results:", error);
         setList([]);
+      } finally {
+        if(list.length == 0) setLoading(2)
+        else setLoading(0)
       }
     };
 
@@ -39,6 +42,7 @@ export default function SearchQuery() {
     const handleOutsideClick = (event: MouseEvent) => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
         setList([]);
+        setLoading(0)
       }
     };
 
@@ -67,7 +71,7 @@ export default function SearchQuery() {
         onValueChange={setQuery}
       />
 
-      {list && list.length > 0 && (
+      {list && list.length > 0 ? (
         <Listbox
           ref={ref}
           className="absolute left-0 z-10 mt-2 bg-white dark:bg-black dark:text-white border rounded-md shadow-lg w-full overflow-y-auto max-h-78"
@@ -78,12 +82,31 @@ export default function SearchQuery() {
               key={id}
               href={path}
               className="px-4 py-2 cursor-pointer"
-              onPress={() => setQuery('')}
+              onPress={() => {
+                setQuery('')
+                setLoading(0)
+              }}
             >
               {query}
             </ListboxItem>
           ))}
         </Listbox>
+      ) : loading == 1 ? (
+        <Listbox
+          ref={ref}
+          className="absolute left-0 z-10 mt-2 bg-white dark:bg-black dark:text-white border rounded-md shadow-lg w-full overflow-y-auto max-h-78"
+        >
+          <ListboxItem key={1} isReadOnly>Loading...</ListboxItem>
+        </Listbox>
+      ) : loading == 2 ? (
+        <Listbox
+          ref={ref}
+          className="absolute left-0 z-10 mt-2 bg-white dark:bg-black dark:text-white border rounded-md shadow-lg w-full overflow-y-auto max-h-78"
+        >
+          <ListboxItem key={1} isReadOnly>Nothing here...</ListboxItem>
+        </Listbox>
+      ) : (
+        <></>
       )}
     </div>
   );

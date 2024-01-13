@@ -19,7 +19,7 @@ model Flavors {
   alt String
   price Float
 }
-// as soon as i add to flavors i need to add also in searchquery table (pending)
+// as soon as i add to flavors i need to add also in searchquery table 
 model SearchQuery {
   id Int @id @default(autoincrement())
   query String

@@ -6,7 +6,7 @@ export default function Tags() {
   return (
     <div className="mb-10 mt-10 p-3 gap-8 flex flex-col md:flex-row-reverse justify-evenly items-center">
       <h1 className="flex flex-col gap-8 text-4xl">
-        <span className="block">Scooping Greatnesse</span>
+        <span className="block">Scooping Greatness</span>
           <span className="inline-block bg-gray-400 p-2 text-5xl -rotate-3 font-bold hover:rotate-0 transition ease-in-out origin-right">
           Icy Indulgence
           </span>
