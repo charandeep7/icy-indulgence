@@ -12,8 +12,8 @@ export const readFlavors = async () => {
         const UniqueAndFun = filterByType('Unique And Fun');
         const InternationalFlavors = filterByType('International Flavors');
         return { Classy, NuttyDelights, UniqueAndFun, InternationalFlavors };
-    } catch (error) {
-        console.log(error)
+    } catch (error: any) {
+        throw new Error(error.message)
     } finally {
         prisma.$disconnect()
     }

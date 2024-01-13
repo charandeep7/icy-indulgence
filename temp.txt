@@ -10,4 +10,35 @@
   --color-700: #7e0029;
   --color-800: #4d0018;
   --color-900: #1f0008;
-}s
+}
+
+https://icy-indulgence.vercel.app/
+
+INSERT INTO "SearchQuery" (query, path) VALUES ('Vanilla', 'https://icy-indulgence.vercel.app/product/Vanilla');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Chocolate', 'https://icy-indulgence.vercel.app/product/Chocolate');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Strawberry', 'https://icy-indulgence.vercel.app/product/Strawberry');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Rocky Road', 'https://icy-indulgence.vercel.app/product/Rocky Road');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Neapolitan', 'https://icy-indulgence.vercel.app/product/Neapolitan');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Coffee', 'https://icy-indulgence.vercel.app/product/Coffee');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Butter Pecan', 'https://icy-indulgence.vercel.app/product/Butter Pecan');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Rum Raisin', 'https://icy-indulgence.vercel.app/product/Rum Raisin');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Mint Chocolate', 'https://icy-indulgence.vercel.app/product/Mint Chocolate');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Almond', 'https://icy-indulgence.vercel.app/product/Almond');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Hazelnut', 'https://icy-indulgence.vercel.app/product/Hazelnut');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Macadamia', 'https://icy-indulgence.vercel.app/product/Macadamia');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Maple Walnut', 'https://icy-indulgence.vercel.app/product/Maple Walnut');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Pistachio', 'https://icy-indulgence.vercel.app/product/Pistachio');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Pralines', 'https://icy-indulgence.vercel.app/product/Pralines');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Cheesecake', 'https://icy-indulgence.vercel.app/product/Cheesecake');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Raspberry', 'https://icy-indulgence.vercel.app/product/Raspberry');
+INSERT INTO "SearchQuery" (query, path) VALUES ('BB Cobbler', 'https://icy-indulgence.vercel.app/product/BB Cobbler');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Blueberry', 'https://icy-indulgence.vercel.app/product/Blueberry');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Pineapple', 'https://icy-indulgence.vercel.app/product/Pineapple');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Mango Tango', 'https://icy-indulgence.vercel.app/product/Mango Tango');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Passion Fruit', 'https://icy-indulgence.vercel.app/product/Passion Fruit');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Kiwi Sorbet', 'https://icy-indulgence.vercel.app/product/Kiwi Sorbet');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Green Matcha', 'https://icy-indulgence.vercel.app/product/Green Matcha');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Tiramisu', 'https://icy-indulgence.vercel.app/product/Tiramisu');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Thai Tea', 'https://icy-indulgence.vercel.app/product/Thai Tea');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Lychee Rose', 'https://icy-indulgence.vercel.app/product/Lychee Rose');
+INSERT INTO "SearchQuery" (query, path) VALUES ('Sesame Seed', 'https://icy-indulgence.vercel.app/product/Sesame Seed');

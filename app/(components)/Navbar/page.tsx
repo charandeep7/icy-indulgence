@@ -13,9 +13,7 @@ import {
   DropdownSection,
 } from "@nextui-org/dropdown";
 import { Avatar } from "@nextui-org/avatar";
-import { Input } from "@nextui-org/input";
 import { Link } from "@nextui-org/link";
-import { SearchIcon } from "./SearchIcon";
 import { Button } from "@nextui-org/button";
 import { cedarville_cursive } from "@/lib/fonts";
 import { CiCircleChevDown } from "react-icons/ci";
@@ -27,6 +25,7 @@ import Logo from "./Logo";
 import NextLink from "next/link";
 
 import ThemeSwitcher from "@/app/components/ThemeSwitcher";
+import SearchQuery from "./SearchQuery";
 
 export default function Header() {
   return (
@@ -117,19 +116,8 @@ export default function Header() {
           <ThemeSwitcher />
         </div>
         <div className="flex items-center gap-2">
-          <Input
-            classNames={{
-              base: "max-w-full sm:max-w-[20rem] md:max-w-[25rem] h-10",
-              mainWrapper: "h-full",
-              input: "text-small",
-              inputWrapper:
-                "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
-            }}
-            placeholder="Explore your ice cream paradise..."
-            size="sm"
-            startContent={<SearchIcon size={18} />}
-            type="search"
-          />
+          {/* search icon  */}
+          <SearchQuery />
           <div className="hidden sm:block">
             <Button size="sm" color="success" isIconOnly as={NextLink} href="/cart">
               <span className="text-2xl">
