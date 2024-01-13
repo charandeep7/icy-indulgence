@@ -11,7 +11,6 @@ export const readFlavors = async () => {
         const NuttyDelights = filterByType('Nutty Delights');
         const UniqueAndFun = filterByType('Unique And Fun');
         const InternationalFlavors = filterByType('International Flavors');
-
         return { Classy, NuttyDelights, UniqueAndFun, InternationalFlavors };
     } catch (error) {
         console.log(error)
