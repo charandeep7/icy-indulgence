@@ -8,12 +8,12 @@ import Loading from "./loading";
 export default function Home() {
   return (
     <div>
-      {/* <Hero />
+      <Hero />
       <Suspense fallback={<Loading />}>
         <ProductList />
       </Suspense>
       <Tags />
-      <Faq /> */}
+      <Faq />
     </div>
   );
 }
