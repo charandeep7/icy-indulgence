@@ -119,7 +119,7 @@ export default function Header() {
           {/* search icon  */}
           <SearchQuery />
           {/* Cart button */}
-          <div className="sm:block">
+          <div className="hidden md:block">
             <CartButton />
           </div>
           <Dropdown placement="bottom-end">
@@ -165,7 +165,8 @@ export default function Header() {
               </DropdownSection>
               <DropdownSection title="Accounts">
                 <DropdownItem key="settings">My Settings</DropdownItem>
-                <DropdownItem key="analytics">Analytics</DropdownItem>
+                <DropdownItem key="cart" as={NextLink} href="/cart">Cart</DropdownItem>
+                <DropdownItem key="favorite" as={NextLink} href="/favorite">Favorite</DropdownItem>
                 <DropdownItem key="system">System</DropdownItem>
                 <DropdownItem key="configurations">Configurations</DropdownItem>
                 <DropdownItem key="help_and_feedback">
