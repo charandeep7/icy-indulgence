@@ -35,23 +35,8 @@
   }
 }
 
-@keyframes fadeOutToLeft {
-  from {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: translateX(-20px) scale(0.8);
-  }
-}
-
 .animate-fadeIn {
   animation: fadeInFromRight 0.5s ease-in-out;
-}
-
-.animate-fadeOut {
-  animation: fadeOutToLeft 0.5s ease-in-out;
 }
 
 

@@ -32,7 +32,7 @@ export default function Carousel() {
   useEffect(() => {
     let interval = setInterval(() => {
       setCurrentSlide((currentSlide + 1) % images.length);
-    }, 4000);
+    }, 5000);
     return () => clearInterval(interval);
   }, [currentSlide]);
   return (
@@ -58,7 +58,7 @@ export default function Carousel() {
                   width={1400}
                   height={800}
                   className={`transition-opacity duration-500 ${
-                    currentSlide === index ? "animate-fadeIn" : "animate-fadeOut"
+                    currentSlide === index ? "animate-fadeIn" : ""
                   }`}
                 />
               );

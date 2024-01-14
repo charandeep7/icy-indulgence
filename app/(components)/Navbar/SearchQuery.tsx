@@ -6,7 +6,7 @@ import NextLink from "next/link";
 import { Listbox, ListboxSection, ListboxItem } from "@nextui-org/listbox";
 
 interface QueryProps {
-  id: string;
+  id: number;
   query: string;
   path: string;
 }
@@ -26,7 +26,8 @@ export default function SearchQuery() {
       try {
         setLoading(1);
         const result = await fetch(`/api/search?query=${query}`);
-        const data = await result.json();setList(data);
+        const data = await result.json();
+        setList(data);
       } catch (error) {
         console.error("Error fetching search results:", error);
         setList([]);
@@ -74,12 +75,12 @@ export default function SearchQuery() {
       {list && list.length > 0 ? (
         <Listbox
           ref={ref}
-          className="absolute left-0 z-10 mt-2 bg-white dark:bg-black dark:text-white border rounded-md shadow-lg w-full overflow-y-auto max-h-78"
+          className="absolute left-0 z-10 mt-2 bg-white dark:bg-black dark:text-white border rounded-md shadow-lg w-full overflow-y-auto max-h-72"
         >
           {list.map(({ id, query, path }) => (
             <ListboxItem
               as={NextLink}
-              key={id}
+              key={id+Math.random()}
               href={path}
               className="px-4 py-2 cursor-pointer"
               onPress={() => {
@@ -94,14 +95,14 @@ export default function SearchQuery() {
       ) : loading == 1 ? (
         <Listbox
           ref={ref}
-          className="absolute left-0 z-10 mt-2 bg-white dark:bg-black dark:text-white border rounded-md shadow-lg w-full overflow-y-auto max-h-78"
+          className="absolute left-0 z-10 mt-2 bg-white dark:bg-black dark:text-white border rounded-md shadow-lg w-full overflow-y-auto max-h-72"
         >
           <ListboxItem key={1} isReadOnly>Loading...</ListboxItem>
         </Listbox>
       ) : loading == 2 ? (
         <Listbox
           ref={ref}
-          className="absolute left-0 z-10 mt-2 bg-white dark:bg-black dark:text-white border rounded-md shadow-lg w-full overflow-y-auto max-h-78"
+          className="absolute left-0 z-10 mt-2 bg-white dark:bg-black dark:text-white border rounded-md shadow-lg w-full overflow-y-auto max-h-72"
         >
           <ListboxItem key={1} isReadOnly>Nothing here...</ListboxItem>
         </Listbox>
