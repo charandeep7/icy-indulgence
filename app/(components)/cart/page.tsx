@@ -1,5 +1,7 @@
 export default function page() {
   return (
-    <div>Cart</div>
+    <div className="bg-pink-800 w-1/3">
+      cart
+    </div>
   )
 }

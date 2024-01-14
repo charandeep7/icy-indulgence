@@ -20,12 +20,12 @@ import { CiCircleChevDown } from "react-icons/ci";
 import { TbListDetails } from "react-icons/tb";
 import { IoMdMan } from "react-icons/io";
 import { IoMdContacts } from "react-icons/io";
-import { FaCartShopping } from "react-icons/fa6";
 import Logo from "./Logo";
 import NextLink from "next/link";
 
 import ThemeSwitcher from "@/app/components/ThemeSwitcher";
 import SearchQuery from "./SearchQuery";
+import CartButton from "./CartButton";
 
 export default function Header() {
   return (
@@ -118,23 +118,18 @@ export default function Header() {
         <div className="flex items-center gap-2">
           {/* search icon  */}
           <SearchQuery />
-          <div className="hidden sm:block">
-            <Button size="sm" color="success" isIconOnly as={NextLink} href="/cart">
-              <span className="text-2xl">
-                <FaCartShopping />
-              </span>
-            </Button>
+          {/* Cart button */}
+          <div className="sm:block">
+            <CartButton />
           </div>
-          <Dropdown
-            placement="bottom-end"
-          >
+          <Dropdown placement="bottom-end">
             <DropdownTrigger>
               <Avatar
                 isBordered
                 as="button"
                 className="transition-transform w-max object-fill"
                 color="secondary"
-                name="Jason Hughes"
+                name={"Jason Hughes"}
                 size="sm"
                 src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
               />
@@ -170,7 +165,6 @@ export default function Header() {
               </DropdownSection>
               <DropdownSection title="Accounts">
                 <DropdownItem key="settings">My Settings</DropdownItem>
-                <DropdownItem key="team_settings">Team Settings</DropdownItem>
                 <DropdownItem key="analytics">Analytics</DropdownItem>
                 <DropdownItem key="system">System</DropdownItem>
                 <DropdownItem key="configurations">Configurations</DropdownItem>
