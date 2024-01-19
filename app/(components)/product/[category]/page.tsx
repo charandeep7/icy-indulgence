@@ -1,9 +1,7 @@
 import { Divider } from "@nextui-org/divider";
-import v1 from "@/public/vanilla/classic-vanilla.jpg";
-import v2 from "@/public/vanilla/french-vanilla.png";
 import Card from "./Card";
-import { Vanilla_Icecreams } from "@/lib/constant";
-const images = [v1, v2, v1, v2, v1, v2, v1, v1, v1, v1, v1, v1, v1, v1];
+import { readSingleFlavor } from "@/app/api/prisma/readFlavors";
+import { notFound } from "next/navigation";
 type Params = {
   params: {
     category: string;
@@ -25,6 +23,10 @@ export async function generateMetadata({ params: { category } }: Params) {
 
 export default async function Category({ params: { category } }: Params) {
   const productCategory = category.split("%20").join(" ");
+  const icecreams = await readSingleFlavor(productCategory);
+  if (!icecreams) {
+    notFound();
+  }
   return (
     <div className="relative">
       <div className="sticky top-16 z-20 backdrop-blur-sm">
@@ -32,8 +34,9 @@ export default async function Category({ params: { category } }: Params) {
         <Divider />
       </div>
       <div className="-z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 p-4">
-        {Vanilla_Icecreams.map(({img, price, quantity, subtype}, id) => (
+        {icecreams.map(({ id, img, price, quantity, subtype }, index) => (
           <Card
+            id={id}
             key={id.toString()}
             subtype={subtype}
             price={price}

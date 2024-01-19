@@ -42,3 +42,78 @@ INSERT INTO "SearchQuery" (query, path) VALUES ('Tiramisu', 'https://icy-indulge
 INSERT INTO "SearchQuery" (query, path) VALUES ('Thai Tea', 'https://icy-indulgence.vercel.app/product/Thai Tea');
 INSERT INTO "SearchQuery" (query, path) VALUES ('Lychee Rose', 'https://icy-indulgence.vercel.app/product/Lychee Rose');
 INSERT INTO "SearchQuery" (query, path) VALUES ('Sesame Seed', 'https://icy-indulgence.vercel.app/product/Sesame Seed');
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+INSERT INTO searchquery (query, path) VALUES ('Vanilla', 'http://localhost:3000/product/Vanilla');
+INSERT INTO searchquery (query, path) VALUES ('Chocolate', 'http://localhost:3000/product/Chocolate');
+INSERT INTO searchquery (query, path) VALUES ('Strawberry', 'http://localhost:3000/product/Strawberry');
+INSERT INTO searchquery (query, path) VALUES ('Rocky Road', 'http://localhost:3000/product/Rocky Road');
+INSERT INTO searchquery (query, path) VALUES ('Neapolitan', 'http://localhost:3000/product/Neapolitan');
+INSERT INTO searchquery (query, path) VALUES ('Coffee', 'http://localhost:3000/product/Coffee');
+INSERT INTO searchquery (query, path) VALUES ('Butter Pecan', 'http://localhost:3000/product/Butter Pecan');
+INSERT INTO searchquery (query, path) VALUES ('Rum Raisin', 'http://localhost:3000/product/Rum Raisin');
+INSERT INTO searchquery (query, path) VALUES ('Mint Chocolate', 'http://localhost:3000/product/Mint Chocolate');
+INSERT INTO searchquery (query, path) VALUES ('Almond', 'http://localhost:3000/product/Almond');
+INSERT INTO searchquery (query, path) VALUES ('Hazelnut', 'http://localhost:3000/product/Hazelnut');
+INSERT INTO searchquery (query, path) VALUES ('Macadamia', 'http://localhost:3000/product/Macadamia');
+INSERT INTO searchquery (query, path) VALUES ('Maple Walnut', 'http://localhost:3000/product/Maple Walnut');
+INSERT INTO searchquery (query, path) VALUES ('Pistachio', 'http://localhost:3000/product/Pistachio');
+INSERT INTO searchquery (query, path) VALUES ('Pralines', 'http://localhost:3000/product/Pralines');
+INSERT INTO searchquery (query, path) VALUES ('Cheesecake', 'http://localhost:3000/product/Cheesecake');
+INSERT INTO searchquery (query, path) VALUES ('Raspberry', 'http://localhost:3000/product/Raspberry');
+INSERT INTO searchquery (query, path) VALUES ('BB Cobbler', 'http://localhost:3000/product/BB Cobbler');
+INSERT INTO searchquery (query, path) VALUES ('Blueberry', 'http://localhost:3000/product/Blueberry');
+INSERT INTO searchquery (query, path) VALUES ('Pineapple', 'http://localhost:3000/product/Pineapple');
+INSERT INTO searchquery (query, path) VALUES ('Mango Tango', 'http://localhost:3000/product/Mango Tango');
+INSERT INTO searchquery (query, path) VALUES ('Passion Fruit', 'http://localhost:3000/product/Passion Fruit');
+INSERT INTO searchquery (query, path) VALUES ('Kiwi Sorbet', 'http://localhost:3000/product/Kiwi Sorbet');
+INSERT INTO searchquery (query, path) VALUES ('Green Matcha', 'http://localhost:3000/product/Green Matcha');
+INSERT INTO searchquery (query, path) VALUES ('Tiramisu', 'http://localhost:3000/product/Tiramisu');
+INSERT INTO searchquery (query, path) VALUES ('Thai Tea', 'http://localhost:3000/product/Thai Tea');
+INSERT INTO searchquery (query, path) VALUES ('Lychee Rose', 'http://localhost:3000/product/Lychee Rose');
+INSERT INTO searchquery (query, path) VALUES ('Sesame Seed', 'http://localhost:3000/product/Sesame Seed');
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+INSERT INTO flavors (type, title, img, alt, price) VALUES
+("Classy", "Vanilla", "/flavor/classy/vanilla.jpg", "vanilla", 205.50),
+("Classy", "Chocolate", "/flavor/classy/choclate.jpg", "chocolate", 503.00),
+("Classy", "Strawberry", "/flavor/classy/strawberry.jpg", "strawberry", 610.00),
+("Classy", "Rocky Road", "/flavor/classy/rockyroad.jpg", "rocky road", 708.00),
+("Classy", "Neapolitan", "/flavor/classy/neapolitan.jpg", "neapolitan", 812.20),
+("Classy", "Coffee", "/flavor/classy/coffee.jpg", "coffee", 807.50),
+("Classy", "Butter Pecan", "/flavor/classy/butter.jpg", "butter pecan", 815.70),
+("Classy", "Rum Raisin", "/flavor/classy/rumraisin.jpg", "rum raisin", 807.50),
+("Classy", "Mint Chocolate", "/flavor/classy/mint.jpg", "mint chocolate", 805.30);
+
+INSERT INTO flavors (type, title, img, alt, price)
+VALUES
+("Nutty Delights", "Almond", "/flavor/nutty/almond.jpg", "almond", 305.50),
+("Nutty Delights", "Hazelnut", "/flavor/nutty/hazlenut.jpg", "hazelnut", 703.00),
+("Nutty Delights", "Macadamia", "/flavor/nutty/maca.jpg", "macadamia", 620.00),
+("Nutty Delights", "Maple Walnut", "/flavor/nutty/maple.jpg", "maple walnut", 808.00),
+("Nutty Delights", "Pistachio", "/flavor/nutty/pistachio.jpg", "pistachio", 1200.20),
+("Nutty Delights", "Pralines", "/flavor/nutty/praline.jpg", "pralines", 560.50);
+
+INSERT INTO flavors (type, title, img, alt, price)
+VALUES
+("Unique And Fun", "Cheesecake", "/flavor/unique/cheesecake.jpg", "cheesecake", 305.50),
+("Unique And Fun", "Raspberry", "/flavor/unique/raspberry.jpg", "raspberry", 305.50),
+("Unique And Fun", "BB Cobbler", "/flavor/unique/bb-cobbler.jpg", "bb cobbler", 305.50),
+("Unique And Fun", "Blueberry", "/flavor/unique/blueberry.jpg", "blueberry", 305.50),
+("Unique And Fun", "Pineapple", "/flavor/unique/pineapple.jpg", "pineapple", 305.50),
+("Unique And Fun", "Mango Tango", "/flavor/unique/mango-tango.jpg", "mango tango", 305.50),
+("Unique searchqueryAnd Fun", "Passion Fruit", "/flavor/unique/passion-fruit.jpg", "passion fruit", 305.50),
+("Unique And Fun", "Kiwi Sorbet", "/flavor/unique/kiwi-sorbet.jpg", "kiwi sorbet", 305.50);
+
+INSERT INTO flavors (type, title, img, alt, price)
+VALUES
+("International Flavors", "Green Matcha", "/flavor/international/green-matcha.jpg", "green matcha", 305.50),
+("International Flavors", "Tiramisu", "/flavor/international/tiramisu.jpg", "tiramisu", 703.00),
+("International Flavors", "Thai Tea", "/flavor/international/thai-tea.jpg", "thai tea", 620.00),
+("International Flavors", "Lychee Rose", "/flavor/international/lychee-rose.jpg", "lychee rose", 808.00),
+("International Flavors", "Sesame Seed", "/flavor/international/seasame.jpg", "sesame seed", 1200.20);

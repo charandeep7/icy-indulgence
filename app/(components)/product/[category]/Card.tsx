@@ -5,10 +5,12 @@ import { FaCartPlus, FaHeart } from "react-icons/fa6";
 import { SiReadthedocs } from "react-icons/si";
 import Link from "next/link";
 import ShareButton from "./ShareButton";
+import AddToCart from "./AddToCart";
 
-export default function Card({subtype,price,more,img,quantity}:{
+export default function Card({id,subtype,price,more,img,quantity}:{
+  id: number,
   subtype: string,
-  price: string,
+  price: number,
   more: string,
   img: string,
   quantity: number
@@ -28,17 +30,11 @@ export default function Card({subtype,price,more,img,quantity}:{
       </div>
       <div className="flex w-full mb-2 justify-evenly">
         <p className="font-semibold text-lg">{subtype}</p>
-        <p className="font-semibold text-base text-default-500">{price}</p>
+        <p className="font-semibold text-base text-default-500">₹{price}</p>
       </div>
       <div className="w-full flex flex-col justify-end">
         <div className="flex space-x-2 mt-auto">
-          <Button
-            className="bg-[#FFA500] w-1/2 p-2"
-            endContent={<FaCartPlus />}
-            size="md"
-          >
-            Add to Cart
-          </Button>
+         <AddToCart id={id} subtype={subtype} />
           <Button
             className="bg-[#FF4081] w-1/2 p-2"
             endContent={<FaHeart />}

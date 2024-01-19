@@ -12,14 +12,37 @@ datasource db {
 }
 
 model Flavors {
-  id Int @id @default(autoincrement())
-  type String
-  title String
-  img String
-  alt String
-  price Float
+  id         Int       @id @default(autoincrement())
+  type       String
+  title      String
+  img        String
+  alt        String
+  price      Float
+  iceCreams  IceCreams[]
 }
-// as soon as i add to flavors i need to add also in searchquery table 
+
+model IceCreams {
+  id       Int            @id @default(autoincrement())
+  img      String
+  subtype  String         // Classical Vanilla
+  price    Float
+  quantity Int
+  flavor   Flavors        @relation(fields: [flavorId], references: [id], onDelete: Cascade)
+  flavorId Int
+  details IceCreamDetails[]
+}
+
+
+model IceCreamDetails {
+  id        Int      @id @default(autoincrement())
+  flavor    String
+  texture   String
+  verstaility String
+  desc      String
+  iceCream  IceCreams @relation(fields: [iceCreamId], references: [id], onDelete: Cascade)
+  iceCreamId Int
+}
+
 model SearchQuery {
   id Int @id @default(autoincrement())
   query String
