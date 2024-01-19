@@ -7,25 +7,30 @@ Source: https://sketchfab.com/3d-models/ice-cream-3december2020-day9-045d9ad885b
 Title: Ice Cream - #3December2020 Day9
 */
 "use client";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
 // @ts-ignore
 export function Icecream(props) {
-  const ref = useRef();
+  const ref = useRef<THREE.Group>(null!);
+  // const [hover, setHover] = useState(false);
   // useFrame((state, delta) => {
-  //   state.size.height = 5
+  //   if(hover){
+  //     ref.current.rotation.y += 0.05
+  //     ref.current.rotation.x = Math.sin(state.clock.elapsedTime/4)
+  //   }
   // });
 
   const { camera } = useThree();
   // Set the initial camera position for zoom
-  camera.position.set(20, 20, 20);
+  camera.position.set(20, 5, 40);
+
 
   const { nodes, materials } = useGLTF("/model/ice-cream.gltf");
   return (
-    <group {...props} dispose={null} ref={ref} position={[0, -19, 0]}>
+    <group {...props} dispose={null} ref={ref} position={[2, -19, 0]}>
       <group
         position={[0, 33.457, 0]}
         rotation={[-1.669, -0.102, 0.026]}
