@@ -26,7 +26,8 @@ export const cartItems = createAsyncThunk('cartItems', async () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-        });
+            cache: 'no-cache'
+        }, );
         return await result.json();
     } catch (error: any) {
         throw new Error(error.message);
