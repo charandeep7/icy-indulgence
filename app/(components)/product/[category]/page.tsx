@@ -5,7 +5,6 @@ import { notFound } from "next/navigation";
 type Params = {
   params: {
     category: string;
-    price: string;
   };
 };
 
@@ -55,9 +54,7 @@ export const revalidate = 3000000
 
 export async function generateStaticParams() {
   const allIceCreamFlavors = await readAllFlavor()
-  return allIceCreamFlavors.map((icecream) => {
-    return {
-      category: icecream.subtype
-    }
-  })
+  return allIceCreamFlavors.map(icecream => ({
+    category: icecream.subtype,
+  }))
 }
