@@ -1,6 +1,6 @@
 import { Divider } from "@nextui-org/divider";
 import Card from "./Card";
-import { readSingleFlavor } from "@/app/api/prisma/readFlavors";
+import { readAllFlavor, readSingleFlavor } from "@/app/api/prisma/readFlavors";
 import { notFound } from "next/navigation";
 type Params = {
   params: {
@@ -23,6 +23,7 @@ export async function generateMetadata({ params: { category } }: Params) {
 
 export default async function Category({ params: { category } }: Params) {
   const productCategory = category.split("%20").join(" ");
+  const data = await readAllFlavor()
   const icecreams = await readSingleFlavor(productCategory);
   if (!icecreams) {
     notFound();
@@ -48,4 +49,15 @@ export default async function Category({ params: { category } }: Params) {
       </div>
     </div>
   );
+}
+
+export const revalidate = 3000000
+
+export async function generateStaticParams() {
+  const allIceCreamFlavors = await readAllFlavor()
+  return allIceCreamFlavors.map(({subtype}) => {
+    return {
+      subtype
+    }
+  })
 }
