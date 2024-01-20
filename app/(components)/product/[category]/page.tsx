@@ -8,6 +8,7 @@ type Params = {
     price: string;
   };
 };
+
 export async function generateMetadata({ params: { category } }: Params) {
   const title = category.split("%20").join(" ");
   if (!title) {
@@ -55,9 +56,9 @@ export const revalidate = 3000000
 
 export async function generateStaticParams() {
   const allIceCreamFlavors = await readAllFlavor()
-  return allIceCreamFlavors.map(({subtype}) => {
+  return allIceCreamFlavors.map((icecream) => {
     return {
-      subtype
+      category: icecream.subtype
     }
   })
 }
