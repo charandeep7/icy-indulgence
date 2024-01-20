@@ -24,7 +24,6 @@ export async function generateMetadata({ params: { category } }: Params) {
 
 export default async function Category({ params: { category } }: Params) {
   const productCategory = category.split("%20").join(" ");
-  const data = await readAllFlavor()
   const icecreams = await readSingleFlavor(productCategory);
   if (!icecreams) {
     notFound();
