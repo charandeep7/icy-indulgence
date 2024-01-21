@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { store } from '../store';
 
 export interface AddtocartSlice {
     isLoading: boolean;
@@ -43,7 +42,10 @@ export const addtocartSlice = createSlice({
             const carts = storage ? JSON.parse(storage) : []
             state.value = carts
         },
-
+        setCart: (state,action) => {
+            state.value = action.payload
+            
+        },
         increment: (state, action: PayloadAction<number>) => {
             const indexToUpdate = state.value.findIndex(item => item.id === action.payload);
             if (indexToUpdate !== -1) {
@@ -81,6 +83,6 @@ export const addtocartSlice = createSlice({
     },
 });
 
-export const { init, increment, decrement } = addtocartSlice.actions;
+export const { init, setCart, increment, decrement } = addtocartSlice.actions;
 
 export default addtocartSlice.reducer;

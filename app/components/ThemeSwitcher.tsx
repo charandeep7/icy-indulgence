@@ -13,9 +13,6 @@ import { Button } from "@nextui-org/button";
 import { CiIceCream } from "react-icons/ci";
 import { GiChocolateBar } from "react-icons/gi";
 import { GiStrawberry } from "react-icons/gi";
-import { store } from "../redux/store";
-import { cartItems, init } from "../redux/slice/AddtocartSlice";
-
 
 export default function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
@@ -32,8 +29,6 @@ export default function ThemeSwitcher() {
   }, []);
 
   if (!mounted) return null;
-  store.dispatch(init())
-  store.dispatch(cartItems())
   return (
     <Dropdown backdrop="blur">
       <DropdownTrigger>

@@ -22,7 +22,6 @@ import { IoMdMan } from "react-icons/io";
 import { IoMdContacts } from "react-icons/io";
 import Logo from "./Logo";
 import NextLink from "next/link";
-
 import ThemeSwitcher from "@/app/components/ThemeSwitcher";
 import SearchQuery from "./SearchQuery";
 import CartButton from "./CartButton";

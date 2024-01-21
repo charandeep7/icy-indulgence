@@ -7,8 +7,8 @@ import { useEffect, useState, useRef } from "react";
 import { Image } from "@nextui-org/react";
 import { IoCloseSharp } from "react-icons/io5";
 import { useSelector, useDispatch } from 'react-redux'
-import type { AppDispatch, RootState } from '@/app/redux/store'
-import { increment, decrement } from "@/app/redux/slice/AddtocartSlice";
+import { store, type AppDispatch, type RootState } from '@/app/redux/store'
+import { increment, decrement, init, cartItems } from "@/app/redux/slice/AddtocartSlice";
 
 interface CardProps {
   id: number;

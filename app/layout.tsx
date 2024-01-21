@@ -6,6 +6,7 @@ import { Toaster } from "react-hot-toast";
 import Header from "./(components)/Navbar/page";
 import Footer from "./(components)/Footer/page";
 import { ReduxProviders } from "./redux/provider";
+import { Initialzer } from "./Initialzer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +28,7 @@ export default function RootLayout({
           <Providers>
             <Toaster />
             <Header />
+            <Initialzer />
             {children}
             <Footer />
           </Providers>
