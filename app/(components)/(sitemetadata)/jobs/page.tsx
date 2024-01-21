@@ -1,3 +1,10 @@
+import type { Metadata } from 'next'
+ 
+export const metadata: Metadata = {
+  title: 'Jobs',
+  description: 'Jobs at Icy Indulgence',
+}
+
 export default function Jobs() {
   return (
     <div className="max-w-2xl mx-auto my-8 p-6 rounded-md shadow-md dark:shadow-white">

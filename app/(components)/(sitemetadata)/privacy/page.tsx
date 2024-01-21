@@ -1,3 +1,10 @@
+import type { Metadata } from 'next'
+ 
+export const metadata: Metadata = {
+  title: 'Privacy',
+  description: 'privacy | Icy Indulgence',
+}
+
 export default function Privacy() {
   return (
     <div className="max-w-2xl mx-auto my-8 p-6 rounded-md shadow-md dark:shadow-white">
