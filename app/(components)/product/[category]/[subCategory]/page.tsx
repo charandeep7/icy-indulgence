@@ -5,6 +5,8 @@ import { Button } from "@nextui-org/button";
 import { readDetailOfSingleFlavor } from "@/app/api/prisma/readFlavors";
 import { notFound } from "next/navigation";
 import AddToCart from "./AddToCart"
+import { Suspense } from "react";
+import Loading from "@/app/loading";
 
 type Params = {
   params: {
@@ -42,6 +44,7 @@ export default async function SubCategory({
   const { img, price, details } = result
   const icecreamDetail = details?.at(0)
   return (
+    <Suspense fallback={<Loading />}>
     <div className="flex flex-col gap-4 items-center md:gap-0 md:flex-row p-4 justify-evenly">
       <div className="shadow-md dark:shadow-gray-300 p-4 rounded-sm">
         <Image
@@ -101,5 +104,6 @@ export default async function SubCategory({
         </div>
       </div>
     </div>
+    </Suspense>
   );
 }
