@@ -25,8 +25,13 @@ import NextLink from "next/link";
 import ThemeSwitcher from "@/app/components/ThemeSwitcher";
 import SearchQuery from "./SearchQuery";
 import CartButton from "./CartButton";
+import Login from "./Login";
+import { useSession } from "next-auth/react";
+import Signup from "./Signup";
+import SignOut from "./Signout";
 
 export default function Header() {
+  const { data: session, status } = useSession();
   return (
     <Navbar isBordered maxWidth="full">
       <NavbarContent justify="end">
@@ -135,13 +140,35 @@ export default function Header() {
             </DropdownTrigger>
             <DropdownMenu aria-label="Profile Actions" variant="flat">
               <DropdownItem key="profile" className="h-14 gap-2">
-                <p className="font-semibold">Signed in as</p>
-                <p className="font-semibold">kitishkumar2003@gmail.com</p>
+                {status === "loading" ? (
+                  <p className="font-semibold">Signed in as</p>
+                ) : status === "unauthenticated" ? (
+                  <>
+                    <p className="font-semibold">Icy Indulgence</p>
+                    <p className="font-semibold">
+                      By&nbsp;
+                      <a
+                        href="https://portfolio-revisit.vercel.app/"
+                        target="_blank"
+                        className="underline text-red-600 dark:text-red-300"
+                      >
+                        Kitish
+                      </a>
+                    </p>
+                  </>
+                ) : (
+                  <>
+                    <p className="font-semibold">Signed in as</p>
+                    <p className="font-semibold">{session?.user?.email}</p>
+                  </>
+                )}
               </DropdownItem>
               <DropdownSection title="Theme" showDivider>
-                <DropdownItem key="theme-mode">
-                  <ThemeSwitcher />
-                </DropdownItem>
+                <DropdownItem
+                  isReadOnly
+                  key="theme"
+                  startContent={<ThemeSwitcher />}
+                />
               </DropdownSection>
               <DropdownSection title="Features" showDivider>
                 <DropdownItem
@@ -162,19 +189,45 @@ export default function Header() {
                   Owner
                 </DropdownItem>
               </DropdownSection>
-              <DropdownSection title="Accounts">
-                <DropdownItem key="settings">My Settings</DropdownItem>
-                <DropdownItem key="cart" as={NextLink} href="/cart">Cart</DropdownItem>
-                <DropdownItem key="favorite" as={NextLink} href="/favorite">Favorite</DropdownItem>
-                <DropdownItem key="system">System</DropdownItem>
-                <DropdownItem key="configurations">Configurations</DropdownItem>
-                <DropdownItem key="help_and_feedback">
-                  Help & Feedback
-                </DropdownItem>
-                <DropdownItem key="logout" color="danger">
-                  Log Out
-                </DropdownItem>
-              </DropdownSection>
+              {status === "unauthenticated" ? (
+                <DropdownSection title="Guest">
+                  <DropdownItem key="cart" as={NextLink} href="/cart">
+                    Cart
+                  </DropdownItem>
+                  <DropdownItem key="checkout" as={NextLink} href="/checkout">
+                    Checkout
+                  </DropdownItem>
+                  <DropdownItem isReadOnly key="signin">
+                    <Login />
+                  </DropdownItem>
+                  <DropdownItem isReadOnly key="signup">
+                    <Signup />
+                  </DropdownItem>
+                </DropdownSection>
+              ) : (
+                <DropdownSection title="Accounts">
+                  <DropdownItem key="settings">My Settings</DropdownItem>
+                  <DropdownItem key="cart" as={NextLink} href="/cart">
+                    Cart
+                  </DropdownItem>
+                  <DropdownItem key="checkout" as={NextLink} href="/checkout">
+                    Checkout
+                  </DropdownItem>
+                  <DropdownItem key="favorite" as={NextLink} href="/favorite">
+                    Favorite
+                  </DropdownItem>
+                  <DropdownItem key="system">System</DropdownItem>
+                  <DropdownItem key="configurations">
+                    Configurations
+                  </DropdownItem>
+                  <DropdownItem key="help_and_feedback">
+                    Help & Feedback
+                  </DropdownItem>
+                  <DropdownItem key="signout" isReadOnly>
+                    <SignOut />
+                  </DropdownItem>
+                </DropdownSection>
+              )}
             </DropdownMenu>
           </Dropdown>
         </div>
