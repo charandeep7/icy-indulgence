@@ -21,7 +21,7 @@ export default async function ProductList() {
       {flavorsData && (
         <>
           <IceCreamCard flavor="Classy" list={flavorsData.Classy} />
-          {/* <IceCreamCard
+          <IceCreamCard
             flavor="Nutty Delights"
             list={flavorsData.NuttyDelights}
           />
@@ -32,7 +32,7 @@ export default async function ProductList() {
           <IceCreamCard
             flavor="International Flavors"
             list={flavorsData.InternationalFlavors}
-          /> */}
+          />
         </>
       )}
     </div>
