@@ -7,6 +7,7 @@ import Header from "./(components)/Navbar/page";
 import Footer from "./(components)/Footer/page";
 import { ReduxProviders } from "./redux/provider";
 import { Initialzer } from "./Initialzer";
+import AuthProvider from "./context/AuthProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,15 +25,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ReduxProviders>
-          <Providers>
-            <Toaster />
-            <Header />
-            <Initialzer />
-            {children}
-            <Footer />
-          </Providers>
-        </ReduxProviders>
+        <AuthProvider>
+          <ReduxProviders>
+            <Providers>
+              <Toaster />
+              <Header />
+              <Initialzer />
+              {children}
+              <Footer />
+            </Providers>
+          </ReduxProviders>
+        </AuthProvider>
       </body>
     </html>
   );

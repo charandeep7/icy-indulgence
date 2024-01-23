@@ -6,6 +6,7 @@ import { RootState } from "@/app/redux/store";
 import { useDispatch } from "react-redux";
 import { decrement, increment } from "@/app/redux/slice/AddtocartSlice";
 import { Image } from "@nextui-org/react";
+import NextLink from 'next/link'
 
 export default function page() {
   const data = useSelector((state: RootState) => state.cart);
@@ -61,6 +62,8 @@ export default function page() {
         <Button
           className="fixed bottom-5 right-5 p-6 bg-green-500"
           endContent={<RiSecurePaymentLine />}
+          as={NextLink}
+          href="/checkout"
         >
           Checkout
         </Button>

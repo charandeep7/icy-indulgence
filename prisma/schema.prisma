@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  // provider = "mysql"
-  provider = "postgresql"
+  provider = "mysql"
+  // provider = "postgresql"
   url = env("DATABASE_URL")
 }
 
@@ -47,4 +47,13 @@ model SearchQuery {
   id Int @id @default(autoincrement())
   query String
   path String
+}
+
+model User {
+  id Int @id @default(autoincrement())
+  username String @unique
+  email String @unique
+  password String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
