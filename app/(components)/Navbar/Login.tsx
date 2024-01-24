@@ -17,7 +17,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { TSignInSchema, signInSchema } from "@/lib/zsigninschema";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
-import Draggable from "react-draggable";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -35,6 +35,7 @@ export default function Login() {
       password: "",
     },
   });
+  const router = useRouter();
   const [servererr, setServererr] = useState("");
   const onSubmit = async (value: TSignInSchema) => {
     setServererr("");
@@ -50,6 +51,7 @@ export default function Login() {
         return;
       }
       reset();
+      router.replace("/");
     } catch (error) {
       setServererr("something went wrong");
     }
@@ -59,79 +61,75 @@ export default function Login() {
       <Button onPress={onOpen} color="success" size="sm" variant="flat">
         Sign In
       </Button>
-      <Draggable>
-        <Modal
-          isOpen={isOpen}
-          onOpenChange={onOpenChange}
-          placement="center"
-          backdrop="opaque"
-        >
-          <ModalContent>
-            {(onClose) => (
-              <>
-                <ModalHeader className="flex flex-col gap-1">
-                  Sign in
-                </ModalHeader>
-                <form onSubmit={handleSubmit(onSubmit)}>
-                  <ModalBody>
-                    <Input
-                      autoFocus
-                      endContent={
-                        <RiMailLine className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-                      }
-                      label="Email"
-                      placeholder="Enter your email"
-                      variant="bordered"
-                      {...register("email")}
-                    />
-                    {errors.email && (
-                      <p className="text-red-500">{`${errors.email.message}`}</p>
-                    )}
-                    <Input
-                      endContent={
-                        <FaLock className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-                      }
-                      label="Password"
-                      placeholder="Enter your password"
-                      type="password"
-                      variant="bordered"
-                      {...register("password")}
-                    />
-                    {errors.password && (
-                      <p className="text-red-500">{`${errors.password?.message}`}</p>
-                    )}
-                    <div className="flex py-2 px-1 justify-between">
-                      <Checkbox
-                        classNames={{
-                          label: "text-small",
-                        }}
-                      >
-                        Remember me
-                      </Checkbox>
-                      <Link color="primary" href="#" size="sm">
-                        Forgot password?
-                      </Link>
-                    </div>
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button color="danger" variant="flat" onPress={onClose}>
-                      Close
-                    </Button>
-                    <Button type="submit" color="primary">
-                      {isSubmitting ? "Loading..." : "Sign In"}
-                    </Button>
-                  </ModalFooter>
-                </form>
-                {servererr !== "" && (
-                  <div className="bg-red-500 mt-2 p-2 text-white text-center capitalize rounded-md transition-all">
-                    {servererr}
+      <Modal
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        placement="center"
+        backdrop="opaque"
+      >
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">Sign in</ModalHeader>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <ModalBody>
+                  <Input
+                    autoFocus
+                    endContent={
+                      <RiMailLine className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                    }
+                    label="Email"
+                    placeholder="Enter your email"
+                    variant="bordered"
+                    {...register("email")}
+                  />
+                  {errors.email && (
+                    <p className="text-red-500">{`${errors.email.message}`}</p>
+                  )}
+                  <Input
+                    endContent={
+                      <FaLock className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                    }
+                    label="Password"
+                    placeholder="Enter your password"
+                    type="password"
+                    variant="bordered"
+                    {...register("password")}
+                  />
+                  {errors.password && (
+                    <p className="text-red-500">{`${errors.password?.message}`}</p>
+                  )}
+                  <div className="flex py-2 px-1 justify-between">
+                    <Checkbox
+                      classNames={{
+                        label: "text-small",
+                      }}
+                    >
+                      Remember me
+                    </Checkbox>
+                    <Link color="primary" href="#" size="sm">
+                      Forgot password?
+                    </Link>
                   </div>
-                )}
-              </>
-            )}
-          </ModalContent>
-        </Modal>
-      </Draggable>
+                </ModalBody>
+                <ModalFooter>
+                  <Button color="danger" variant="flat" onPress={onClose}>
+                    Close
+                  </Button>
+                  <Button type="submit" color="primary">
+                    {isSubmitting ? "Loading..." : "Sign In"}
+                  </Button>
+                </ModalFooter>
+              </form>
+              {servererr !== "" && (
+                <div className="bg-red-500 mt-2 p-2 text-white text-center capitalize rounded-md transition-all">
+                  {servererr}
+                </div>
+              )}
+            </>
+          )}
+        </ModalContent>
+      </Modal>
     </>
   );
 }

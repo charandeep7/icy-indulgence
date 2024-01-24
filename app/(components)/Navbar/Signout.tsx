@@ -7,12 +7,12 @@ import {
   Button,
   useDisclosure,
 } from "@nextui-org/react";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Draggable from "react-draggable";
 
 export default function SignOut() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-
+  const { data: session, status } = useSession();
   return (
     <>
       <Button onPress={onOpen} color="danger" size="sm" variant="flat">

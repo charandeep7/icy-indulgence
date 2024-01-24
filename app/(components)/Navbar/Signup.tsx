@@ -1,17 +1,69 @@
-import React from "react";
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure, Checkbox, Input, Link} from "@nextui-org/react";
-import { SiMaterialdesignicons } from "react-icons/si";
-import { FaLock } from "react-icons/fa6";
+import React, { useState } from "react";
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  useDisclosure,
+  Checkbox,
+  Input,
+  Link,
+} from "@nextui-org/react";
+import { FaLock, FaUser } from "react-icons/fa6";
 import { RiMailLine } from "react-icons/ri";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { TSignUpSchema, signUpSchema } from "@/lib/zsignupschema";
+import { useRouter } from "next/navigation";
 
 export default function Signup() {
-  const {isOpen, onOpen, onOpenChange} = useDisclosure();
-
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+    getValues,
+    setError,
+  } = useForm<TSignUpSchema>({
+    resolver: zodResolver(signUpSchema),
+    defaultValues: {
+      username: "",
+      email: "",
+      password: "",
+    },
+  });
+  const router = useRouter();
+  const [servererr, setServererr] = useState("");
+  const onSubmit = async (values: TSignUpSchema) => {
+    try {
+      const res = await fetch("/api/authorization", {
+        method: "POST",
+        body: JSON.stringify(values),
+        headers: {
+          "content-type": "application/json",
+        },
+      });
+      if (res.ok) {
+        reset();
+        // router.push("/signin");
+      } else {
+        const errored = await res.json();
+        setServererr(errored.message);
+      }
+    } catch (error) {
+      setServererr("something went wrong");
+    }
+  };
   return (
     <>
-      <Button onPress={onOpen} color="primary" size="sm" variant="flat">Sign Up</Button>
-      <Modal 
-        isOpen={isOpen} 
+      <Button onPress={onOpen} color="primary" size="sm" variant="flat">
+        Sign Up
+      </Button>
+      <Modal
+        isOpen={isOpen}
         onOpenChange={onOpenChange}
         placement="center"
         backdrop="opaque"
@@ -19,47 +71,62 @@ export default function Signup() {
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Log in</ModalHeader>
-              <ModalBody>
-                <Input
-                  autoFocus
-                  endContent={
-                    <RiMailLine className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-                  }
-                  label="Email"
-                  placeholder="Enter your email"
-                  variant="bordered"
-                />
-                <Input
-                  endContent={
-                    <FaLock className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-                  }
-                  label="Password"
-                  placeholder="Enter your password"
-                  type="password"
-                  variant="bordered"
-                />
-                <div className="flex py-2 px-1 justify-between">
-                  <Checkbox
-                    classNames={{
-                      label: "text-small",
-                    }}
-                  >
-                    Remember me
-                  </Checkbox>
-                  <Link color="primary" href="#" size="sm">
-                    Forgot password?
-                  </Link>
+              <ModalHeader className="flex flex-col gap-1">Sign up</ModalHeader>
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <ModalBody>
+                  <Input
+                    autoFocus
+                    endContent={
+                      <FaUser className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                    }
+                    label="Username"
+                    placeholder="Enter username"
+                    variant="bordered"
+                    {...register("username")}
+                  />
+                  {errors.username && (
+                    <p className="text-red-500">{`${errors.username.message}`}</p>
+                  )}
+                  <Input
+                    endContent={
+                      <RiMailLine className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                    }
+                    label="Email"
+                    placeholder="Enter email"
+                    variant="bordered"
+                    {...register("email")}
+                  />
+                  {errors.email && (
+                    <p className="text-red-500">{`${errors.email.message}`}</p>
+                  )}
+                  <Input
+                    endContent={
+                      <FaLock className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                    }
+                    label="Password"
+                    placeholder="Enter password"
+                    type="password"
+                    variant="bordered"
+                    {...register("password")}
+                  />
+                  {errors.password && (
+                    <p className="text-red-500">{`${errors.password.message}`}</p>
+                  )}
+                </ModalBody>
+                <ModalFooter>
+                  <Button color="danger" variant="flat" onPress={onClose}>
+                    Close
+                  </Button>
+                  <Button type="submit" color="primary">
+                    {isSubmitting ? "Loading..." : "Sign Up"}
+                  </Button>
+                </ModalFooter>
+              </form>
+              {servererr !== "" && (
+                <div className="bg-red-500 mt-2 p-2 text-white text-center capitalize rounded-md transition-all">
+                  {servererr}
                 </div>
-              </ModalBody>
-              <ModalFooter>
-                <Button color="danger" variant="flat" onPress={onClose}>
-                  Close
-                </Button>
-                <Button color="primary" onPress={onClose}>
-                  Sign in
-                </Button>
-              </ModalFooter>
+              )}
             </>
           )}
         </ModalContent>
