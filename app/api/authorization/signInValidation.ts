@@ -4,7 +4,7 @@ export const checkUserEmailExists = async (email: string) => {
     try {
         const user = await prisma.user.findUnique({
             where: {
-                email
+                email: email.toLowerCase()
             },
         });
         return user

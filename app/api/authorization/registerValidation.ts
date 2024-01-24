@@ -5,7 +5,7 @@ export const checkEmailExists = async (email: string) => {
     try {
         const res = await prisma.user.findUnique({
             where: {
-                email
+                email: email.toLowerCase()
             }
         })
         return res
@@ -36,7 +36,7 @@ export const createUser = async (username: string, email: string, password: stri
         const res = await prisma.user.create({
             data: {
                 username,
-                email,
+                email: email.toLowerCase(),
                 password: await bcrypt.hash(password, 10),
             }
         })
