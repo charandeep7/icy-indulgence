@@ -58,7 +58,7 @@ export default function SearchQuery() {
     <div className="relative">
       <Input
         classNames={{
-          base: "max-w-full sm:max-w-[30rem] h-10",
+          base: "w-full sm:w-[20rem] h-10",
           mainWrapper: "h-full relative",
           input: "text-small",
           inputWrapper:
