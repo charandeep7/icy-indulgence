@@ -32,7 +32,6 @@ export default function SignIn() {
         password: value.password,
         redirect: false,
       });
-      console.log(res)
       if (res?.error) {
         const errored = res.error;
         setServererr(errored);
@@ -110,7 +109,7 @@ export default function SignIn() {
                       placeholder="Password"
                       {...register("password")}
                     />
-                    {errors.email && (
+                    {errors.password && (
                       <p className="text-red-500">{`${errors.password?.message}`}</p>
                     )}
                   </div>

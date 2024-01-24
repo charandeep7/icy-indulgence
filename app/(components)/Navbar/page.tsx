@@ -111,11 +111,7 @@ export default function Header() {
         </NavbarContent>
       </NavbarContent>
 
-      <NavbarContent
-        as="div"
-        className="flex items-center p-1"
-        justify="center"
-      >
+      <NavbarContent className="flex items-center p-1" justify="center">
         <div className="hidden sm:block">
           <ThemeSwitcher />
         </div>
@@ -126,6 +122,8 @@ export default function Header() {
           <div className="hidden md:block">
             <CartButton />
           </div>
+        </div>
+        <div className="relative">
           <Dropdown placement="bottom-end">
             <DropdownTrigger>
               <Avatar
@@ -138,7 +136,7 @@ export default function Header() {
                 src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
               />
             </DropdownTrigger>
-            <DropdownMenu aria-label="Profile Actions" variant="flat">
+            <DropdownMenu aria-label="Profile Actions" variant="flat" className="overflow-y-auto no-scrollbar max-h-[80vh]">
               <DropdownItem key="profile" className="h-14 gap-2">
                 {status === "loading" ? (
                   <p className="font-semibold">Signed in as</p>

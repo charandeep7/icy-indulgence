@@ -13,7 +13,7 @@ export default function Signup() {
       <Modal 
         isOpen={isOpen} 
         onOpenChange={onOpenChange}
-        placement="top-center"
+        placement="center"
         backdrop="opaque"
       >
         <ModalContent>
