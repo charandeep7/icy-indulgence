@@ -17,9 +17,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { TSignUpSchema, signUpSchema } from "@/lib/zsignupschema";
 import { useRouter } from "next/navigation";
+import { CiPhone } from "react-icons/ci";
+import toast from "react-hot-toast";
 
 export default function Signup() {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const signupmodel = useDisclosure();
+  const otpmodel = useDisclosure();
   const {
     register,
     handleSubmit,
@@ -37,18 +40,71 @@ export default function Signup() {
   });
   const router = useRouter();
   const [servererr, setServererr] = useState("");
+  const [otperror, setOtperror] = useState("");
+  const [otpinput, setOtpinput] = useState("");
+  const [otp, setOTP] = useState<number>();
+  const sendOTP = async () => {
+    const newotp = Math.floor(100000 + Math.random() * 900000);
+    setOTP(newotp);
+    const otpverify = await fetch("/api/send", {
+      method: "POST",
+      body: JSON.stringify({
+        otp: newotp,
+        email: getValues("email"),
+      }),
+      headers: {
+        "content-type": "application/json",
+      },
+    });
+    if (otpverify.ok) {
+      //
+    } else {
+      setOtperror("Something went wrong");
+      return null;
+    }
+  };
+  const verifyOTP = async () => {
+    if (parseInt(otpinput.trim()) === otp) {
+      await fetch("/api/authorization", {
+        method: "POST",
+        body: JSON.stringify({
+          username: getValues("username"),
+          email: getValues("email"),
+          password: getValues("password"),
+          createnow: true,
+        }),
+        headers: {
+          "content-type": "application/json",
+        },
+      });
+      reset();
+      toast.success("Verified 😻");
+      router.push('/');
+      signupmodel.onClose()
+      otpmodel.onClose()
+    } else {
+      setOtperror("Wrong OTP");
+    }
+  };
   const onSubmit = async (values: TSignUpSchema) => {
     try {
       const res = await fetch("/api/authorization", {
         method: "POST",
-        body: JSON.stringify(values),
+        body: JSON.stringify({
+          ...values,
+          createnow: false,
+        }),
         headers: {
           "content-type": "application/json",
         },
       });
       if (res.ok) {
-        reset();
-        // router.push("/signin");
+        // otp
+        setServererr("");
+        toast.success("Check your mail for OTP ✅");
+        // open modal
+        otpmodel.onOpen();
+        sendOTP();
       } else {
         const errored = await res.json();
         setServererr(errored.message);
@@ -59,12 +115,17 @@ export default function Signup() {
   };
   return (
     <>
-      <Button onPress={onOpen} color="primary" size="sm" variant="flat">
+      <Button
+        onPress={signupmodel.onOpen}
+        color="primary"
+        size="sm"
+        variant="flat"
+      >
         Sign Up
       </Button>
       <Modal
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
+        isOpen={signupmodel.isOpen}
+        onOpenChange={signupmodel.onOpenChange}
         placement="center"
         backdrop="opaque"
       >
@@ -127,6 +188,47 @@ export default function Signup() {
                   {servererr}
                 </div>
               )}
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+
+      {/* otp model */}
+      <Modal
+        isOpen={otpmodel.isOpen}
+        placement="center"
+        className="m-4"
+        onOpenChange={otpmodel.onOpenChange}
+        isDismissable={false}
+      >
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">
+                Verify your account
+              </ModalHeader>
+              <ModalBody>
+                <Input
+                  autoFocus
+                  endContent={
+                    <CiPhone className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                  }
+                  label="OTP"
+                  placeholder="Enter otp"
+                  variant="bordered"
+                  type="text"
+                  onChange={(e) => setOtpinput(e.target.value)}
+                />
+                {otperror && <p className="text-red-500">{`${otperror}`}</p>}
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="light" onPress={onClose}>
+                  Close
+                </Button>
+                <Button color="primary" onPress={() => verifyOTP()}>
+                  Verify
+                </Button>
+              </ModalFooter>
             </>
           )}
         </ModalContent>

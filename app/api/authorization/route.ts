@@ -3,7 +3,11 @@ import { checkEmailExists, checkUsernameExists, createUser } from "./registerVal
 
 export async function POST(req: Request) {
     try {
-        const { username, email, password } = await req.json();
+        const { username, email, password, createnow } = await req.json();
+        if(createnow){
+            await createUser(username, email, password)
+            return NextResponse.json({ message: "created" }, { status: 200 });
+        }
         const isUsernameExists = await checkUsernameExists(username)
         if (isUsernameExists) {
             return NextResponse.json(
@@ -18,8 +22,7 @@ export async function POST(req: Request) {
                 { status: 409 }
             );
         }
-        await createUser(username, email, password)
-        return NextResponse.json({ message: "created" }, { status: 200 });
+        return NextResponse.json({ message: "verified" }, { status: 200 });
     } catch (error: any) {
         return NextResponse.json({ message: error.message }, { status: 500 });
     }
