@@ -23,9 +23,9 @@ export const metadata: Metadata = {
 };
 
 export default async function page({ params: { id } }: Params) {
-  const user = await getUserIdDetail(parseInt(id));
+  const user = await getUserIdDetail(Number(id));
   if (!user) {
-    notFound();
+    notFound()
   }
   const session = await getServerSession(options)
   if(session && session.user?.email !== user.email){
