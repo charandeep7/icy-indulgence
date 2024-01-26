@@ -18,8 +18,12 @@ import {
   Input,
 } from "@nextui-org/react";
 import { CiPhone } from "react-icons/ci";
+import { useSession } from "next-auth/react";
+import Loading from "@/app/loading";
 
 export default function SignUp() {
+  const router = useRouter();
+  const { data: session, status } = useSession();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [otperror, setOtperror] = useState("");
   const [otpinput, setOtpinput] = useState("");
@@ -38,7 +42,6 @@ export default function SignUp() {
       password: "",
     },
   });
-  const router = useRouter();
   const [servererr, setServererr] = useState("");
   const [otp,setOTP] = useState<number>()
   const sendOTP = async () => {
@@ -109,6 +112,12 @@ export default function SignUp() {
       setServererr("something went wrong");
     }
   };
+  if (status === "loading") {
+    return <Loading />
+  }else if(status === "authenticated"){
+    router.replace('/')
+    return <></>;
+  }
   return (
     <section>
       <div className="flex flex-col sm:flex-row">
