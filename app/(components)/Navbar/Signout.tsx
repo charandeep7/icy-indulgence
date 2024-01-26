@@ -23,7 +23,7 @@ export default function SignOut() {
         onOpenChange={onOpenChange}
         placement="center"
         backdrop="opaque"
-        className="relative inset-0 m-3 cursor-move"
+        className="relative inset-0 m-3"
       >
         <ModalContent>
           {(onClose) => (

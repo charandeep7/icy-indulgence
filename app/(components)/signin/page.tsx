@@ -8,22 +8,25 @@ import Image from "next/image";
 import { TSignInSchema, signInSchema } from "@/lib/zsigninschema";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Loading from "@/app/loading";
 
 export default function SignIn() {
-  // const { data: session } = useSession({
-  //   required: true,
-  //   onUnauthenticated() {
-  //     redirect("/api/auth/signin?callbackUrl=/client");
-  //   },
-  // });
-  const { register, handleSubmit, formState: {errors, isSubmitting}, reset, getValues, setError } = useForm<TSignInSchema>({
+  const router = useRouter();
+  const { data: session, status } = useSession();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+    getValues,
+    setError,
+  } = useForm<TSignInSchema>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
       email: "",
-      password: ""
-    }
-  })
-  const router = useRouter();
+      password: "",
+    },
+  });
   const [servererr, setServererr] = useState("");
   const onSubmit = async (value: TSignInSchema) => {
     try {
@@ -31,19 +34,26 @@ export default function SignIn() {
         email: value.email,
         password: value.password,
         redirect: false,
+        // callbackUrl
       });
       if (res?.error) {
         const errored = res.error;
         setServererr(errored);
         return;
       }
-      reset()
+      reset();
       router.replace("/");
     } catch (error) {
       setServererr("something went wrong");
     }
   };
 
+  if (status === "loading") {
+    return <Loading />
+  }else if(status === "authenticated"){
+    router.replace('/')
+    return <></>;
+  }
   return (
     <section>
       <div className="flex flex-col sm:flex-row">
@@ -133,7 +143,13 @@ export default function SignIn() {
           </div>
         </div>
         <div className="w-full sm:w-1/2 flex justify-center items-center">
-          <Image src='/i2.jpg' alt="ice" height={500} width={500} className="h-[500px] w-[500px] object-contain drop-shadow-2xl p-4" />
+          <Image
+            src="/i2.jpg"
+            alt="ice"
+            height={500}
+            width={500}
+            className="h-[500px] w-[500px] object-contain drop-shadow-2xl p-4"
+          />
         </div>
       </div>
     </section>
