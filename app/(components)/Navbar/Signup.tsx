@@ -7,9 +7,7 @@ import {
   ModalFooter,
   Button,
   useDisclosure,
-  Checkbox,
   Input,
-  Link,
 } from "@nextui-org/react";
 import { FaLock, FaUser } from "react-icons/fa6";
 import { RiMailLine } from "react-icons/ri";
