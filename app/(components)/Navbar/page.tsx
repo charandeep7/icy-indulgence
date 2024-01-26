@@ -29,6 +29,7 @@ import Login from "./Login";
 import { useSession } from "next-auth/react";
 import Signup from "./Signup";
 import SignOut from "./Signout";
+import Loading from "@/app/loading";
 
 export default function Header() {
   const { data: session, status } = useSession();
@@ -139,7 +140,7 @@ export default function Header() {
             <DropdownMenu aria-label="Profile Actions" variant="flat" className="overflow-y-auto no-scrollbar max-h-[80vh]">
               <DropdownItem key="profile" className="h-14 gap-2">
                 {status === "loading" ? (
-                  <p className="font-semibold">Signed in as</p>
+                  <p className="font-semibold">Loading...</p>
                 ) : status === "unauthenticated" ? (
                   <>
                     <p className="font-semibold">Icy Indulgence</p>
@@ -187,7 +188,13 @@ export default function Header() {
                   Owner
                 </DropdownItem>
               </DropdownSection>
-              {status === "unauthenticated" ? (
+              {status === "loading" ? (
+                <DropdownSection title="loading">
+                  <DropdownItem isReadOnly>
+                    loading...
+                  </DropdownItem>
+                </DropdownSection>
+              ) : status === "unauthenticated" ? (
                 <DropdownSection title="Guest">
                   <DropdownItem key="cart" as={NextLink} href="/cart">
                     Cart
@@ -214,7 +221,7 @@ export default function Header() {
                   <DropdownItem key="favorite" as={NextLink} href="/favorite">
                     Favorite
                   </DropdownItem>
-                  <DropdownItem key="system">System</DropdownItem>
+                  <DropdownItem key="system" target="_blank" href={`${location.origin}/api/status`}>System</DropdownItem>
                   <DropdownItem key="configurations">
                     Configurations
                   </DropdownItem>
