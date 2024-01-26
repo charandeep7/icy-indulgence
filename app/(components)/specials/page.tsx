@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 import Special3d from "./special3d/page";
@@ -7,11 +7,14 @@ import { IoIosIceCream } from "react-icons/io";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default async function Specials() {
-    const router = useRouter()
-    const { data: session } = useSession()
-    if (!session) router.refresh()
+  const router = useRouter();
+  const { data: session } = useSession();
+  useEffect(() => {
+    router.refresh()
+  },[session])
   return (
     <div className="ml-0 sm:ml-8">
       <div>
