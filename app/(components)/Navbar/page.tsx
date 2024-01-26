@@ -29,10 +29,19 @@ import Login from "./Login";
 import { useSession } from "next-auth/react";
 import Signup from "./Signup";
 import SignOut from "./Signout";
-import Loading from "@/app/loading";
+import { useEffect, useState } from "react";
 
 export default function Header() {
   const { data: session, status } = useSession();
+  const [id,setId] = useState<number>(0)
+  useEffect(() => {
+    if(session?.user?.email){
+      fetch(`/api/user?email=${session?.user?.email}`,{cache: 'no-store'})
+      .then((res) => res.json())
+      .then((res) => setId(res.id))
+      .catch((err) => console.log(err))
+    }
+  },[session])
   return (
     <Navbar isBordered maxWidth="full">
       <NavbarContent justify="end">
@@ -211,7 +220,7 @@ export default function Header() {
                 </DropdownSection>
               ) : (
                 <DropdownSection title="Accounts">
-                  <DropdownItem key="settings">My Settings</DropdownItem>
+                  <DropdownItem key="settings" as={NextLink} href={`/user/${id}`}>My Settings</DropdownItem>
                   <DropdownItem key="cart" as={NextLink} href="/cart">
                     Cart
                   </DropdownItem>
