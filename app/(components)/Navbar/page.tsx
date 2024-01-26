@@ -225,7 +225,7 @@ export default function Header() {
                   <DropdownItem key="configurations">
                     Configurations
                   </DropdownItem>
-                  <DropdownItem key="help_and_feedback">
+                  <DropdownItem key="help_and_feedback" as={NextLink} href='/contactus'>
                     Help & Feedback
                   </DropdownItem>
                   <DropdownItem key="signout" isReadOnly>
