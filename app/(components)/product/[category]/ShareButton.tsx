@@ -16,7 +16,7 @@ import toast from "react-hot-toast";
 
 export default function ShareButton({ subtype }: { subtype: string }) {
   const [domain, setDomain] = useState("");
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const model = useDisclosure();
   useEffect(() => {
     const pathname = location.href;
     const copyURL = URLMaker(pathname, subtype);
@@ -25,12 +25,13 @@ export default function ShareButton({ subtype }: { subtype: string }) {
   const handleCopy = () => {
     navigator.clipboard.writeText(domain)
     toast.success('Copied ✅')
-    return () => onclose
+    model.onClose()
+    return () => {}
   }
   return (
     <>
       <Button
-        onPress={onOpen}
+        onPress={model.onOpen}
         className="bg-[#0096FF] w-1/2 p-2"
         endContent={<IoMdShareAlt />}
         size="md"
@@ -39,8 +40,8 @@ export default function ShareButton({ subtype }: { subtype: string }) {
       </Button>
       <Modal
         backdrop="opaque"
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
+        isOpen={model.isOpen}
+        onOpenChange={model.onOpenChange}
         placement="center"
         classNames={{
           backdrop:
