@@ -5,7 +5,7 @@ import { MdManageAccounts } from "react-icons/md";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getUserIdDetail } from "@/app/api/user/getUserId";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import Loading from "@/app/loading";
 import { accountAge, parseUpdateDate } from "@/lib/parseDate";
@@ -29,7 +29,7 @@ export default async function page({ params: { id } }: Params) {
   }
   const session = await getServerSession(options)
   if(session && session.user?.email !== user.email){
-    redirect('/')
+    notFound()
   }
   return (
     <Suspense fallback={<Loading />}>

@@ -19,7 +19,7 @@ export default function page() {
           {items.map(({ id, subtype, price, img }, index) => {
             const quantity = value.find((v) => v.id === id)?.count || 0;
             return (
-              <div key={index} className="flex justify-around gap-2 p-4">
+              <div key={index} id={subtype} className="flex justify-around gap-2 p-4">
                 <div className="w-1/2 sm:w-1/3">
                   <Image
                     src={img}

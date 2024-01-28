@@ -227,7 +227,7 @@ export default function Header() {
                   <DropdownItem key="checkout" as={NextLink} href="/checkout">
                     Checkout
                   </DropdownItem>
-                  <DropdownItem key="favorite" as={NextLink} href="/favorite">
+                  <DropdownItem key="favorite" as={NextLink} href={`/user/${id}/favorite`}>
                     Favorite
                   </DropdownItem>
                   <DropdownItem key="system" target="_blank" href={`${location.origin}/api/status`}>System</DropdownItem>

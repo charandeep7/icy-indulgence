@@ -1,7 +1,6 @@
 "use client";
 import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
-import Special3d from "./special3d/page";
 import { Button } from "@nextui-org/react";
 import { IoIosIceCream } from "react-icons/io";
 import Link from "next/link";
@@ -44,9 +43,6 @@ export default async function Specials() {
           >
             Learn More
           </Button>
-        </div>
-        <div className="h-unit-8xl shadow-md dark:shadow-gray-700 w-[100%] sm:w-1/2 md:w-2/3 rounded">
-          <Special3d />
         </div>
       </div>
     </div>

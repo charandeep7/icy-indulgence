@@ -25,7 +25,7 @@ const Card = ({ id, title, price, quantity, img }: CardProps) => {
     <>
       <div className="flex justify-around p-4">
         <div className="w-1/2">
-          <Image src={img} alt={title} width={200} height={200} isBlurred />
+          <Image src={img} alt={title} width={200} height={200} isBlurred className="w-[200px] h-[200px] object-contain" />
         </div>
         <div className="w-1/2 flex flex-col gap-2 justify-around">
           <div className="">
