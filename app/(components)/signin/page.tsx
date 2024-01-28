@@ -103,14 +103,14 @@ export default function SignIn() {
                       {" "}
                       Password{" "}
                     </label>
-                    <a
-                      href="#"
-                      title=""
+                    <Link
+                      href="/forgotpassword"
+                      target="_blank"
                       className="text-sm font-semibold hover:underline"
                     >
                       {" "}
                       Forgot password?{" "}
-                    </a>
+                    </Link>
                   </div>
                   <div className="mt-2">
                     <input

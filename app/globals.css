@@ -36,7 +36,7 @@
 
 ::selection {
   color: red;
-  background: #ddd;
+  background: transparent
 }
 
 @keyframes fadeInFromRight {

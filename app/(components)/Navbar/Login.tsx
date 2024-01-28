@@ -18,6 +18,7 @@ import { TSignInSchema, signInSchema } from "@/lib/zsigninschema";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import NextLink from 'next/link'
 
 export default function Login() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -107,7 +108,7 @@ export default function Login() {
                     >
                       Remember me
                     </Checkbox>
-                    <Link color="primary" href="#" size="sm">
+                    <Link as={NextLink} color="primary" href="/forgotpassword" target="_blank" size="sm">
                       Forgot password?
                     </Link>
                   </div>
