@@ -4,11 +4,11 @@ import bcrypt from 'bcrypt'
 
 export const changePassword = async (currentPassword: string,
     newPassword: string,
-    id: string) => {
+    name: string) => {
     try {
         const user = await prisma.user.findUnique({
             where: {
-                id: Number(id)
+                username: name
             },
             select: {
                 username: false,
@@ -41,7 +41,7 @@ export const changePassword = async (currentPassword: string,
         const hashPassword = await bcrypt.hash(newPassword, 10)
         await prisma.user.update({
             where: {
-                id: Number(id)
+                username: name
             },
             data: {
                 password: hashPassword

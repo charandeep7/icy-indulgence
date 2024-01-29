@@ -14,11 +14,11 @@ import toast from "react-hot-toast";
 
 type Params = {
   params: {
-    id: string;
+    name: string;
   };
 };
 
-export default function ChangePassword({ params: { id } }: Params) {
+export default function ChangePassword({ params: { name } }: Params) {
   const {
     register,
     handleSubmit,
@@ -45,7 +45,7 @@ export default function ChangePassword({ params: { id } }: Params) {
           "content-type": "application/json",
         },
         body: JSON.stringify({
-          id: Number(id),
+          name,
           password: getValues("currentPassword"),
           newPassword: getValues("newPassword"),
         }),
@@ -129,7 +129,7 @@ export default function ChangePassword({ params: { id } }: Params) {
             </Button>
           </div>
           {servererr !== "" && (
-            <div className="bg-red-500 mt-2 p-2 text-white text-center capitalize rounded-md transition-all">
+            <div className="bg-red-500 mt-2 p-2 text-white text-center rounded-md transition-all">
               {servererr}
             </div>
           )}

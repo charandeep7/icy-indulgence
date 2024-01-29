@@ -12,6 +12,7 @@ export const options: NextAuthOptions = {
             id: "credentials",
             name: "Credentials",
             credentials: {
+                name: { label: "name", type: "text" },
                 email: { label: "email", type: "email" },
                 password: { label: "password", type: "password" }
             },
@@ -27,25 +28,37 @@ export const options: NextAuthOptions = {
                 if (!isCorrect) {
                     throw new Error("Wrong Password");
                 }
+                credentials.name = user.username
+                // set image if available
                 return user
             }
         })
     ],
     callbacks: {
-        // async jwt({ token, user }) {
-        //   if (user) {
-        //     token.email = user.email;
-        //     token.id = user.id;
-        //   }
-        //   return token;
-        // },
-        // async session({ session, user }) {
-        //   if (user) {
-        //     session.user.email = token.email;
-        //     session.user.id = token.id;
-        //   }s
-        //   return session;
-        // },
+        async jwt({ token, user }) {
+            if (user) {
+                /* eslint-disable */
+                // @ts-ignore
+                token.name = user.username
+                token.email = user.email;
+                token.id = user.id;
+            }
+            return token;
+        },
+        async session({ session, token }) {
+            if (token) {
+                /* eslint-disable */
+                // @ts-ignore
+                session.user.name = token.name;
+                /* eslint-disable */
+                // @ts-ignore
+                session.user.email = token.email
+                /* eslint-disable */
+                // @ts-ignore
+                session.user.id = token.id;
+            }
+            return session;
+        },
         async redirect({ url, baseUrl }) {
             // Allows relative callback URLs
             // if (url.startsWith("/")) return `${baseUrl}${url}`;

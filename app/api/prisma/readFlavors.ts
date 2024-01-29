@@ -62,7 +62,6 @@ export const readSingleFlavor = async (flavor: string) => {
             },
         })
         const iceCreams = out?.at(0)?.iceCreams
-        // console.log(iceCreams)
         return iceCreams
     } catch (error: any){
         throw new Error(error.message)
