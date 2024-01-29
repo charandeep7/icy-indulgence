@@ -14,7 +14,7 @@ export default function SignOut() {
   const { data: session, status } = useSession();
   return (
     <>
-      <Button onPress={onOpen} color="danger" size="sm" variant="flat">
+      <Button onPress={onOpen} color="danger" size="sm" variant="flat" className="relative">
         Sign Out
       </Button>
       <Modal
@@ -23,9 +23,8 @@ export default function SignOut() {
         onOpenChange={onOpenChange}
         placement="center"
         backdrop="opaque"
-        className="relative inset-0 m-3"
       >
-        <ModalContent>
+        <ModalContent >
           {(onClose) => (
             <>
               <ModalHeader className="flex flex-col gap-1">
