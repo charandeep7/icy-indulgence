@@ -13,7 +13,7 @@ import { getServerSession } from "next-auth";
 import { options } from "@/app/api/auth/[...nextauth]/options";
 type Params = {
   params: {
-    id: string;
+    name: string;
   };
 };
 
@@ -22,10 +22,10 @@ export const metadata: Metadata = {
   description: "Account Settings",
 };
 
-export default async function page({ params: { id } }: Params) {
-  const user = await getUserIdDetail(Number(id));
+export default async function page({ params: { name } }: Params) {
+  const user = await getUserIdDetail(name);
   if (!user) {
-    notFound()
+    notFound();
   }
   const session = await getServerSession(options)
   if(session && session.user?.email !== user.email){
@@ -95,7 +95,7 @@ export default async function page({ params: { id } }: Params) {
         </div>
         <Button
           as={Link}
-          href={`/user/${id}/changepassword`}
+          href={`/user/${name}/changepassword`}
           color="primary"
           variant="flat"
           className="self-center"

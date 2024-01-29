@@ -17,7 +17,7 @@ export default async function Specials() {
   return (
     <div className="ml-0 sm:ml-8">
       <div>
-        <h1 className="p-1 pl-4 text-4xl font-semibold">Hello, {session?.user?.email?.split('@')[0]} !</h1>
+        <h1 className="p-1 pl-4 text-4xl font-semibold">Hello, {session?.user?.name} !</h1>
         <p className="p-1 pl-4 text-2xl">{`French Vanilla is your ice-cream of the day !`}</p>
       </div>
       <div className="flex flex-col gap-4 items-center md:gap-4 md:flex-row p-4">

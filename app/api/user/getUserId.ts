@@ -23,14 +23,11 @@ export const getUserIdByEmail = async (email: string) => {
     }
 }
 
-export const getUserIdDetail = async (id: any) => {
+export const getUserIdDetail = async (name: string) => {
     try {
-        if(Number.isNaN(id)){
-            return null
-        }
         const user = await prisma.user.findUnique({
             where: {
-                id
+                username: name
             },
             select: {
                 id: false,
