@@ -9,13 +9,13 @@ import Ice3d from "./(components)/Ice3d/page";
 export default function Home() {
   return (
     <div>
-      <Hero />
+      {/* <Hero /> */}
       <Suspense fallback={<Loading />}>
         <ProductList />
       </Suspense>
-      <Tags />
+      {/* <Tags />
       <Ice3d />
-      <Faq />
+      <Faq /> */}
     </div>
   );
 }

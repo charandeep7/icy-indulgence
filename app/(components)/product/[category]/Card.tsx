@@ -6,6 +6,7 @@ import { SiReadthedocs } from "react-icons/si";
 import Link from "next/link";
 import ShareButton from "./ShareButton";
 import AddToCart from "./AddToCart";
+import FavoriteButton from "./FavoriteButton";
 
 export default function Card({id,subtype,price,more,img,quantity}:{
   id: number,
@@ -35,13 +36,7 @@ export default function Card({id,subtype,price,more,img,quantity}:{
       <div className="w-full flex flex-col justify-end">
         <div className="flex space-x-2 mt-auto">
          <AddToCart id={id} subtype={subtype} />
-          <Button
-            className="bg-[#FF4081] w-1/2 p-2"
-            endContent={<FaHeart />}
-            size="md"
-          >
-            Favorite
-          </Button>
+          <FavoriteButton id={id} />
         </div>
         <div className="flex space-x-2 mt-2">
           <Button

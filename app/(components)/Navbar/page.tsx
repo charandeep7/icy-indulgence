@@ -16,7 +16,7 @@ import { Avatar } from "@nextui-org/avatar";
 import { Link } from "@nextui-org/link";
 import { Button } from "@nextui-org/button";
 import { cedarville_cursive } from "@/lib/fonts";
-import { CiCircleChevDown } from "react-icons/ci";
+import { CiCircleChevDown, CiMenuFries } from "react-icons/ci";
 import { TbListDetails } from "react-icons/tb";
 import { IoMdMan } from "react-icons/io";
 import { IoMdContacts } from "react-icons/io";
@@ -126,15 +126,23 @@ export default function Header() {
         <div className="relative">
           <Dropdown placement="bottom-end">
             <DropdownTrigger>
-              <Avatar
+              {
+                status === "authenticated" ? (
+                  <Avatar
                 isBordered
                 as="button"
                 className="transition-transform w-max object-fill"
                 color="secondary"
-                name={"Jason Hughes"}
+                name={session?.user?.name ? session.user.name : ""}
                 size="sm"
-                src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                src={`https://ui-avatars.com/api/?name=${session?.user?.name ? session.user.name : "ok"}}`}
               />
+                ) : status === "unauthenticated" ? (
+                  <Button color="default" isIconOnly endContent={<CiMenuFries />}></Button>
+                ) : (
+                  <Button color="default" isIconOnly isLoading></Button>
+                )
+              }
             </DropdownTrigger>
             <DropdownMenu aria-label="Profile Actions" variant="flat" className="overflow-y-auto no-scrollbar max-h-[80vh]">
               <DropdownItem key="profile" className="h-14 gap-2">
@@ -227,7 +235,7 @@ export default function Header() {
                   <DropdownItem key="help_and_feedback" as={NextLink} href='/contactus'>
                     Help & Feedback
                   </DropdownItem>
-                  <DropdownItem key="signout" isReadOnly>
+                  <DropdownItem key="signout" isReadOnly className="relative">
                     <SignOut />
                   </DropdownItem>
                 </DropdownSection>
