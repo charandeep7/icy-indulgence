@@ -97,7 +97,7 @@ export default async function SubCategory({
             className="bg-[#4CAF50] w-1/2 p-2 text-xl"
             size="md"
             as={Link}
-            href={"/cart"} // Replace with the actual URL
+            href={`/cart#${productSubCategory}`} // Replace with the actual URL
           >
             View Cart
           </Button>
