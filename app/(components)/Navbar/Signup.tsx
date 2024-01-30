@@ -77,9 +77,9 @@ export default function Signup() {
       });
       reset();
       toast.success("Verified 😻");
-      router.push('/');
-      signupmodel.onClose()
-      otpmodel.onClose()
+      router.push("/");
+      signupmodel.onClose();
+      otpmodel.onClose();
     } else {
       setOtperror("Wrong OTP");
     }
@@ -141,11 +141,10 @@ export default function Signup() {
                     label="Username"
                     placeholder="Enter username"
                     variant="bordered"
+                    isInvalid={errors?.username ? true : false}
+                    errorMessage={errors?.username?.message}
                     {...register("username")}
                   />
-                  {errors.username && (
-                    <p className="text-red-500">{`${errors.username.message}`}</p>
-                  )}
                   <Input
                     endContent={
                       <RiMailLine className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
@@ -153,11 +152,10 @@ export default function Signup() {
                     label="Email"
                     placeholder="Enter email"
                     variant="bordered"
+                    isInvalid={errors?.email ? true : false}
+                    errorMessage={errors?.email?.message}
                     {...register("email")}
                   />
-                  {errors.email && (
-                    <p className="text-red-500">{`${errors.email.message}`}</p>
-                  )}
                   <Input
                     endContent={
                       <FaLock className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
@@ -166,18 +164,21 @@ export default function Signup() {
                     placeholder="Enter password"
                     type="password"
                     variant="bordered"
+                    isInvalid={errors?.password ? true : false}
+                    errorMessage={errors?.password?.message}
                     {...register("password")}
                   />
-                  {errors.password && (
-                    <p className="text-red-500">{`${errors.password.message}`}</p>
-                  )}
                 </ModalBody>
                 <ModalFooter>
                   <Button color="danger" variant="flat" onPress={onClose}>
                     Close
                   </Button>
-                  <Button type="submit" color="primary">
-                    {isSubmitting ? "Loading..." : "Sign Up"}
+                  <Button
+                    type="submit"
+                    color="primary"
+                    isLoading={isSubmitting}
+                  >
+                    Sign Up
                   </Button>
                 </ModalFooter>
               </form>

@@ -29,6 +29,7 @@ import Login from "./Login";
 import { useSession } from "next-auth/react";
 import Signup from "./Signup";
 import SignOut from "./Signout";
+import ConfirmSignout from "./ConfirmSignout";
 
 export default function Header() {
   const { data: session, status } = useSession();
@@ -126,25 +127,33 @@ export default function Header() {
         <div className="relative">
           <Dropdown placement="bottom-end">
             <DropdownTrigger>
-              {
-                status === "authenticated" ? (
-                  <Avatar
-                isBordered
-                as="button"
-                className="transition-transform w-max object-fill"
-                color="secondary"
-                name={session?.user?.name ? session.user.name : ""}
-                size="sm"
-                src={`https://ui-avatars.com/api/?name=${session?.user?.name ? session.user.name : "ok"}}`}
-              />
-                ) : status === "unauthenticated" ? (
-                  <Button color="default" isIconOnly endContent={<CiMenuFries />}></Button>
-                ) : (
-                  <Button color="default" isIconOnly isLoading></Button>
-                )
-              }
+              {status === "authenticated" ? (
+                <Avatar
+                  isBordered
+                  as="button"
+                  className="transition-transform w-max object-fill"
+                  color="secondary"
+                  name={session?.user?.name ? session.user.name : ""}
+                  size="sm"
+                  src={`https://ui-avatars.com/api/?name=${
+                    session?.user?.name ? session.user.name : "ok"
+                  }}`}
+                />
+              ) : status === "unauthenticated" ? (
+                <Button
+                  color="default"
+                  isIconOnly
+                  endContent={<CiMenuFries />}
+                ></Button>
+              ) : (
+                <Button color="default" isIconOnly isLoading></Button>
+              )}
             </DropdownTrigger>
-            <DropdownMenu aria-label="Profile Actions" variant="flat" className="overflow-y-auto no-scrollbar max-h-[80vh]">
+            <DropdownMenu
+              aria-label="Profile Actions"
+              variant="flat"
+              className="overflow-y-auto no-scrollbar max-h-[80vh]"
+            >
               <DropdownItem key="profile" className="h-14 gap-2">
                 {status === "loading" ? (
                   <p className="font-semibold">Loading...</p>
@@ -197,9 +206,7 @@ export default function Header() {
               </DropdownSection>
               {status === "loading" ? (
                 <DropdownSection title="loading">
-                  <DropdownItem isReadOnly>
-                    loading...
-                  </DropdownItem>
+                  <DropdownItem isReadOnly>loading...</DropdownItem>
                 </DropdownSection>
               ) : status === "unauthenticated" ? (
                 <DropdownSection title="Guest">
@@ -210,33 +217,82 @@ export default function Header() {
                     Checkout
                   </DropdownItem>
                   <DropdownItem isReadOnly key="signin">
-                    <Login />
+                    <span className="hidden sm:block">
+                      <Login />
+                    </span>
+                    <Button
+                      as={NextLink}
+                      href="/signin"
+                      color="success"
+                      size="sm"
+                      variant="flat"
+                      className="sm:hidden"
+                    >
+                      Sign In
+                    </Button>
                   </DropdownItem>
                   <DropdownItem isReadOnly key="signup">
-                    <Signup />
+                    <span className="hidden sm:block">
+                      <Signup />
+                    </span>
+                    <Button
+                      as={NextLink}
+                      href="/signup"
+                      color="primary"
+                      size="sm"
+                      variant="flat"
+                      className="sm:hidden"
+                    >
+                      Sign Up
+                    </Button>
                   </DropdownItem>
                 </DropdownSection>
               ) : (
                 <DropdownSection title="Accounts">
-                  <DropdownItem key="settings" as={NextLink} href={`/user/${session?.user?.name}`}>My Settings</DropdownItem>
+                  <DropdownItem
+                    key="settings"
+                    as={NextLink}
+                    href={`/user/${session?.user?.name}`}
+                  >
+                    My Settings
+                  </DropdownItem>
                   <DropdownItem key="cart" as={NextLink} href="/cart">
                     Cart
                   </DropdownItem>
                   <DropdownItem key="checkout" as={NextLink} href="/checkout">
                     Checkout
                   </DropdownItem>
-                  <DropdownItem key="favorite" as={NextLink} href={`/user/${session?.user?.name}/favorite`}>
+                  <DropdownItem
+                    key="favorite"
+                    as={NextLink}
+                    href={`/user/${session?.user?.name}/favorite`}
+                  >
                     Favorite
                   </DropdownItem>
-                  <DropdownItem key="system" target="_blank" href={`${location.origin}/api/status`}>System</DropdownItem>
+                  <DropdownItem
+                    key="system"
+                    target="_blank"
+                    href={`${location.origin}/api/status`}
+                  >
+                    System
+                  </DropdownItem>
                   <DropdownItem key="configurations">
                     Configurations
                   </DropdownItem>
-                  <DropdownItem key="help_and_feedback" as={NextLink} href='/contactus'>
+                  <DropdownItem
+                    key="help_and_feedback"
+                    as={NextLink}
+                    href="/contactus"
+                  >
                     Help & Feedback
                   </DropdownItem>
                   <DropdownItem key="signout" isReadOnly className="relative">
-                    <SignOut />
+                    <span className="hidden sm:block">
+                      <SignOut />
+                    </span>
+                    <span className="sm:hidden">
+                      <ConfirmSignout />
+                    </span>
                   </DropdownItem>
                 </DropdownSection>
               )}

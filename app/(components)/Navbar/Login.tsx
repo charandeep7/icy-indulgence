@@ -18,7 +18,7 @@ import { TSignInSchema, signInSchema } from "@/lib/zsigninschema";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import NextLink from 'next/link'
+import NextLink from "next/link";
 
 export default function Login() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -82,11 +82,10 @@ export default function Login() {
                     label="Email"
                     placeholder="Enter your email"
                     variant="bordered"
+                    isInvalid={errors?.email ? true : false}
+                    errorMessage={errors?.email?.message}
                     {...register("email")}
                   />
-                  {errors.email && (
-                    <p className="text-red-500">{`${errors.email.message}`}</p>
-                  )}
                   <Input
                     endContent={
                       <FaLock className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
@@ -95,11 +94,10 @@ export default function Login() {
                     placeholder="Enter your password"
                     type="password"
                     variant="bordered"
+                    isInvalid={errors?.password ? true : false}
+                    errorMessage={errors?.password?.message}
                     {...register("password")}
                   />
-                  {errors.password && (
-                    <p className="text-red-500">{`${errors.password?.message}`}</p>
-                  )}
                   <div className="flex py-2 px-1 justify-between">
                     <Checkbox
                       classNames={{
@@ -108,7 +106,13 @@ export default function Login() {
                     >
                       Remember me
                     </Checkbox>
-                    <Link as={NextLink} color="primary" href="/forgotpassword" target="_blank" size="sm">
+                    <Link
+                      as={NextLink}
+                      color="primary"
+                      href="/forgotpassword"
+                      target="_blank"
+                      size="sm"
+                    >
                       Forgot password?
                     </Link>
                   </div>
@@ -117,8 +121,12 @@ export default function Login() {
                   <Button color="danger" variant="flat" onPress={onClose}>
                     Close
                   </Button>
-                  <Button type="submit" color="primary">
-                    {isSubmitting ? "Loading..." : "Sign In"}
+                  <Button
+                    type="submit"
+                    color="primary"
+                    isLoading={isSubmitting}
+                  >
+                    Sign In
                   </Button>
                 </ModalFooter>
               </form>
