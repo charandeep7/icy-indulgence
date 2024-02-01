@@ -23,13 +23,13 @@ export const metadata: Metadata = {
 };
 
 export default async function page({ params: { name } }: Params) {
+  const session = await getServerSession(options)
+  if(session && name !== session.user?.name){
+    notFound()
+  }
   const user = await getUserIdDetail(name);
   if (!user) {
     notFound();
-  }
-  const session = await getServerSession(options)
-  if(session && session.user?.email !== user.email){
-    notFound()
   }
   return (
     <Suspense fallback={<Loading />}>

@@ -9,8 +9,11 @@ import {
 } from "@/lib/zchangepasswordschema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useSession } from "next-auth/react";
+import { notFound } from "next/navigation";
+import Loading from "@/app/loading";
 
 type Params = {
   params: {
@@ -19,6 +22,7 @@ type Params = {
 };
 
 export default function ChangePassword({ params: { name } }: Params) {
+  const { data: session, status } = useSession();
   const {
     register,
     handleSubmit,
@@ -63,6 +67,9 @@ export default function ChangePassword({ params: { name } }: Params) {
       setServererr("something went wrong");
     }
   };
+
+  if(status === "loading") return <Loading />
+  else if(status === "authenticated" && session && session?.user?.name !== name) notFound()
   return (
     <div className="m-4 flex flex-col justify-center items-center">
       <div className="p-4 grid grid-cols-1 gap-4 w-[100%] sm:w-3/4 md:w-1/2">
