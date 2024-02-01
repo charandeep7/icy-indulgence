@@ -74,10 +74,9 @@ export default function ChangePassword({ params: { name } }: Params) {
             variant="bordered"
             size="lg"
             fullWidth
+            isInvalid={errors?.currentPassword ? true : false}
+            errorMessage={errors?.currentPassword?.message}
           />
-          {errors.currentPassword && (
-            <p className="text-red-500">{`${errors.currentPassword.message}`}</p>
-          )}
           <Input
             {...register("newPassword")}
             type="password"
@@ -85,10 +84,9 @@ export default function ChangePassword({ params: { name } }: Params) {
             variant="bordered"
             size="lg"
             fullWidth
+            isInvalid={errors?.newPassword ? true : false}
+            errorMessage={errors?.newPassword?.message}
           />
-          {errors.newPassword && (
-            <p className="text-red-500">{`${errors.newPassword.message}`}</p>
-          )}
           <Input
             {...register("confirmNewPassword")}
             type="password"
@@ -96,10 +94,9 @@ export default function ChangePassword({ params: { name } }: Params) {
             variant="bordered"
             size="lg"
             fullWidth
+            isInvalid={errors?.confirmNewPassword ? true : false}
+            errorMessage={errors?.confirmNewPassword?.message}
           />
-          {errors.confirmNewPassword && (
-            <p className="text-red-500">{`${errors.confirmNewPassword.message}`}</p>
-          )}
           <div className="p-4 flex flex-col sm:flex-row justify-evenly gap-4">
             <Button
               type="submit"
@@ -111,12 +108,14 @@ export default function ChangePassword({ params: { name } }: Params) {
                 <MdOutlineLockReset className="text-md pointer-events-none flex-shrink-0 text-success-300" />
               }
               disabled={isSubmitting ? true : false}
+              isLoading={isSubmitting}
             >
-              {isSubmitting ? "Loading..." : "Change Password"}
+              Change Password
             </Button>
             <Button
               as={Link}
               href="/forgotpassword"
+              target="_blank"
               color="danger"
               variant="flat"
               className="self-center"
