@@ -8,12 +8,15 @@ export function parseUpdateDate(date: Date) {
 
 export function accountAge(accountCreationDate: Date) {
     const currentDate = new Date();
-    let years = currentDate.getUTCFullYear() - accountCreationDate.getUTCFullYear();
-    let months = currentDate.getUTCMonth() - accountCreationDate.getUTCMonth();
-    const days = currentDate.getUTCDate() - accountCreationDate.getUTCDate();
-    if (months < 0 || (months === 0 && days < 0)) {
-        years--;
-        months += (days < 0) ? 11 : 12;
-    }
-    return `${days} days ${months} months ${years} years`
-}
+  
+    // Calculate the difference in milliseconds
+    const timeDiff = Math.abs(currentDate.getTime() - accountCreationDate.getTime());
+  
+    // Calculate the difference in days, months, and years
+    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const months = Math.floor(days / 30.44); // Assuming an average month length
+    const years = Math.floor(months / 12);
+  
+    return `${days} days ${months} months ${years} years`;
+  }
+  
