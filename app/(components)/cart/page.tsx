@@ -39,10 +39,10 @@ export default function page() {
                     <p>Total: {quantity}</p>
                   </div>
                   <div className="flex flex-col gap-2">
-                    <Button onPress={() => dispatch(increment(id))}>
+                    <Button variant="faded" color="secondary" onPress={() => dispatch(increment(id))}>
                       Increase
                     </Button>
-                    <Button onPress={() => dispatch(decrement(id))}>
+                    <Button variant="faded" color="secondary" onPress={() => dispatch(decrement(id))}>
                       Decrease
                     </Button>
                   </div>

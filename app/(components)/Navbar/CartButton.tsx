@@ -36,8 +36,8 @@ const Card = ({ id, title, price, quantity, img }: CardProps) => {
             <p>Total: {quantity}</p>
           </div>
           <div className="flex flex-col gap-2">
-            <Button onPress={() => dispatch(increment(id))}>Increase</Button>
-            <Button onPress={() => dispatch(decrement(id))}>Decrease</Button>
+            <Button variant="faded" color="secondary" onPress={() => dispatch(increment(id))}>Increase</Button>
+            <Button variant="faded" color="secondary" onPress={() => dispatch(decrement(id))}>Decrease</Button>
           </div>
         </div>
       </div>

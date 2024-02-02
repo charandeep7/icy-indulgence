@@ -31,8 +31,8 @@ const config: Config = {
       strawberry: {
         extend: 'light',
         colors: {
-          background: '#ffe3ef',
-          foreground: '#f00',
+          background: '#ffeaec',
+          foreground: '#472c4c',
           primary: {
             50: "#ffe3ef",
             100: "#ffb2cb",
@@ -47,7 +47,6 @@ const config: Config = {
           }
         },
         layout: {
-
         }
       }
     }

@@ -57,6 +57,7 @@ export default function Carousel() {
                   alt={`Slide ${index + 1}`}
                   width={1400}
                   height={800}
+                  sizes="(min-width: 1500px) 1400px, 93.9vw"
                   className={`transition-opacity duration-500 ${
                     currentSlide === index ? "animate-fadeIn" : ""
                   }`}
