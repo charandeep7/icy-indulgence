@@ -2,7 +2,7 @@ import { Image } from "@nextui-org/image";
 import NextImage from "next/image";
 import Link from "next/link";
 import { Button } from "@nextui-org/button";
-import { readDetailOfSingleFlavor } from "@/app/api/prisma/readFlavors";
+import { readDetailOfSingleFlavor, readDetailsOfAllFlavors } from "@/app/api/prisma/readFlavors";
 import { notFound } from "next/navigation";
 import AddToCart from "./AddToCart"
 import { Suspense } from "react";
@@ -106,4 +106,14 @@ export default async function SubCategory({
     </div>
     </Suspense>
   );
+}
+
+export const revalidate = 3000000;
+
+export async function generateStaticParams() {
+  const allIceCreamDetails = await readDetailsOfAllFlavors();
+  return allIceCreamDetails.map((icecream) => ({
+    category: icecream.category,
+    subCategory: icecream.subCategory
+  }));
 }

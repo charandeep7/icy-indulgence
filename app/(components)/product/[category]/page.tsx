@@ -26,6 +26,7 @@ export async function generateMetadata({ params: { category } }: Params) {
 export default async function Category({ params: { category } }: Params) {
   const productCategory = category.split("%20").join(" ");
   const icecreams = await readSingleFlavor(productCategory);
+  // console.log(await generateStaticParams())
   if (!icecreams) {
     notFound();
   }
@@ -58,6 +59,7 @@ export const revalidate = 3000000;
 
 export async function generateStaticParams() {
   const allIceCreamFlavors = await readAllFlavor();
+  // console.log(allIceCreamFlavors)
   return allIceCreamFlavors.map((icecream) => ({
     category: icecream.subtype,
   }));

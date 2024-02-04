@@ -21,7 +21,7 @@ export const readAllFlavor = async () => {
     try {
         const subtypes: {
             title: string
-        }[] = await prisma.flavors.findMany({ 
+        }[] = await prisma.flavors.findMany({
             select: {
                 title: true,
                 alt: false,
@@ -35,16 +35,16 @@ export const readAllFlavor = async () => {
         const out = await prisma.flavors.findMany({
             where: {
                 title: {
-                    in: subtypes.map(({title}) => title)
+                    in: subtypes.map(({ title }) => title)
                 }
             },
-            select : {
+            select: {
                 iceCreams: true
             }
         })
         const allFavors = out.map(({ iceCreams }) => iceCreams).flat();
         return allFavors
-    } catch(error: any) {
+    } catch (error: any) {
         throw new Error(error.message)
     } finally {
         prisma.$disconnect()
@@ -63,7 +63,7 @@ export const readSingleFlavor = async (flavor: string) => {
         })
         const iceCreams = out?.at(0)?.iceCreams
         return iceCreams
-    } catch (error: any){
+    } catch (error: any) {
         throw new Error(error.message)
     } finally {
         prisma.$disconnect()
@@ -91,14 +91,14 @@ export const readDetailOfSingleFlavor = async (icecream: string) => {
             }
         })
         return out
-    } catch(error: any) {
+    } catch (error: any) {
         throw new Error(error.message)
     } finally {
         prisma.$disconnect()
     }
 }
 
-export const readCartItems = async (ids:{
+export const readCartItems = async (ids: {
     id: number,
     count: number
 }[]) => {
@@ -106,7 +106,7 @@ export const readCartItems = async (ids:{
         const out = await prisma.iceCreams.findMany({
             where: {
                 id: {
-                    in: ids.map(({id}) => id)
+                    in: ids.map(({ id }) => id)
                 }
             },
             select: {
@@ -117,7 +117,48 @@ export const readCartItems = async (ids:{
             }
         })
         return out
-    } catch (error: any){
+    } catch (error: any) {
+        throw new Error(error.message)
+    } finally {
+        prisma.$disconnect()
+    }
+}
+
+export const readDetailsOfAllFlavors = async () => {
+    try {
+        const subtypes = await prisma.flavors.findMany({
+            select: {
+                title: true,
+                alt: false,
+                id: false,
+                img: false,
+                price: false,
+                type: false,
+                iceCreams: {
+                    select: {
+                        subtype: true,
+                        details: {
+                            select: {
+                                flavor: true,
+                                texture: true,
+                                verstaility: true,
+                                desc: true,
+                                iceCreamId: true
+                            }
+                        }
+                    }
+                }
+            }
+        })
+        const allDetails = subtypes.flatMap(({ title, iceCreams }) =>
+            iceCreams.map(({ subtype, details }) => ({
+                category: title,
+                subCategory: subtype,
+                ...details[0],
+            }))
+        )
+        return allDetails
+    } catch (error: any) {
         throw new Error(error.message)
     } finally {
         prisma.$disconnect()
