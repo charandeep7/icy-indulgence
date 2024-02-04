@@ -14,7 +14,7 @@ export default function Home() {
         <ProductList />
       </Suspense>
       <Tags />
-      {/* <Ice3d /> */}
+      <Ice3d />
       <Faq />
     </div>
   );
