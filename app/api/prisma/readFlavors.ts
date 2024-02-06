@@ -40,7 +40,12 @@ export const readAllFlavor = async () => {
             },
             select: {
                 iceCreams: true
-            }
+            },
+            orderBy: [
+                {
+                    id: 'asc'
+                }
+            ]
         })
         const allFavors = out.map(({ iceCreams }) => iceCreams).flat();
         return allFavors
