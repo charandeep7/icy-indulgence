@@ -28,7 +28,7 @@ export function Icecream(props) {
   camera.position.set(20, 5, 40);
 
 
-  const { nodes, materials } = useGLTF("/model/ice-cream.gltf");
+  const { nodes, materials } = useGLTF("/model/ice-cream.glb");
   return (
     <group {...props} dispose={null} ref={ref} position={[2, -19, 0]}>
       <group
@@ -136,4 +136,4 @@ export function Icecream(props) {
   );
 }
 
-useGLTF.preload("/model/ice-cream.gltf");
+useGLTF.preload("/model/ice-cream.glb");

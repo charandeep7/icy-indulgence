@@ -24,7 +24,7 @@ export default async function Specials() {
         <div className="flex flex-col gap-2 items-center justify-center shadow-md dark:shadow-gray-700 p-4 rounded-sm w-[100%] sm:w-1/2 md:w-1/3">
           <Image
             as={NextImage}
-            src={"/vanilla/organic.jpg"}
+            src={"/vanilla/french-vanilla.png"}
             alt="organic"
             height={400}
             width={400}
@@ -35,7 +35,7 @@ export default async function Specials() {
           />
           <Button
             as={Link}
-            href="#"
+            href="/product/Vanilla/French Vanilla"
             color="danger"
             variant="faded"
             fullWidth
